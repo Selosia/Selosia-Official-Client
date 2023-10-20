@@ -1,0 +1,18 @@
+.search-dropdown{
+    background: white;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+}
+
+.search-dropdown:empty{
+    border: none;
+}
+
+
+.search-dropdown-row{
+    width: 14rem;
+    cursor: pointer;
+    text-align: start;
+    margin: 2px 0;
+}

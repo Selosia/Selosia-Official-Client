@@ -1,0 +1,45 @@
+.nav{
+    position: relative;
+    padding: 0 10px;
+    color: #bebdbd;
+    letter-spacing: 0.5px;
+  }
+  .nav::after{
+    content: "";
+    position: absolute;
+    background: linear-gradient(to left,#9ffaff, #26BFC7);
+    border-radius: 20px;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+  }
+  
+  .nav:hover::after{
+   width: 100%;
+  }
+
+  .row-container {
+  
+    @media (min-width: 640px) {
+     max-width: 100%;
+    }
+  
+    @media (min-width: 768px) {
+      max-width: 80% ;
+    }
+  
+    @media (min-width: 1024px) {
+      max-width: 80% ;
+    }
+  
+    @media (min-width: 1280px) {
+      max-width: 100% ;
+    }
+  
+    @media (min-width: 1536px) {
+     max-width: 80%;
+    }
+  }
+  

@@ -1,0 +1,147 @@
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+
+
+
+
+
+
+
+/** Selection color */
+::selection {
+  background-color: #26BFC7; /* Replace with your desired background color */
+  color: #012927; /* Replace with your desired text color */
+}
+
+
+/** User can not drag img */
+img {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+  }
+
+
+  .underlineAnimation{
+    background: #8c7ae6;
+    width: 280px;
+    height: 2px;
+    animation-name: move;
+    animation-duration: 6s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+  }
+
+
+  @keyframes move {
+    0% {
+      background: blue;
+      width: 0px;
+    }
+    10% {
+      background: aqua;
+      width: 40px;
+    }
+    20% {
+      background: red;
+      width: 80px;
+    }
+    25% {
+      background: violet;
+      width: 120px;
+    }
+    30% {
+      background: green;
+      width: 160px;
+    }
+    35% {
+      background: blue;
+      width: 200px;
+    }
+    40% {
+      background: red;
+      width: 240px;
+    }
+    45% {
+      background: aqua;
+      width: 260px;
+    }
+    50% {
+      background: violet;
+      width: 280px;
+    }
+    55% {
+      background: green;
+      width: 260px;
+    }
+    60% {
+      background: blue;
+      width: 240px;
+    }
+    65% {
+      background: aqua;
+      width: 200px;
+    }
+    70% {
+      background: red;
+      width: 160px;
+    }
+    75% {
+      background: violet;
+      width: 120px;
+    }
+    80% {
+      background: green;
+      width: 80px;
+    }
+    90% {
+      background: blue;
+      width: 40px;
+    }
+    100% {
+      background: red;
+      width: 0px;
+    }
+  }
+
+
+
+
+
+  /* Dashboard outlet scrollbar */
+::-webkit-scrollbar {
+  width: .5rem;
+  height: .5rem;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.15);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,.3);
+}
+
+
+
+
+
+
+
+
+
