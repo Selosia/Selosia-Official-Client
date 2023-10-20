@@ -27,13 +27,13 @@ const DynamicBlog = ({ dynamicBlogs }) => {
                   {/* <BsCalendarDate className="w-6 h-6"></BsCalendarDate> */}
                   <span>{data?.dates}</span>
                 </h2>
-                <h2 className="text-2xl font-semibold">{data?.title}</h2>
+                <h2 className="text-2xl title font-semibold">{data?.title}</h2>
 
                 <p>{data?.description.slice(0, 219)}....</p>
                 <div className="flex justify-between">
                   <Link
                     to={`/dynamic-blog/${data?._id}`}
-                    className="text-blue-600  font-semibold  border-black pb-1 border-b-2 "
+                    className="text-[#26BFC7]  font-semibold  border-black pb-1 border-b-2 "
                   >
                     Read more
                   </Link>
@@ -43,7 +43,7 @@ const DynamicBlog = ({ dynamicBlogs }) => {
                     <label
                       onClick={() => handleCommentModal(data)}
                       htmlFor="CommentForABlogModal"
-                      className="cursor-pointer flex font-bold text-blue-600"
+                      className="cursor-pointer flex font-bold text-[#26BFC7]"
                     >
                       leave comment
                       <BiCommentDots className="mt-1 text-xl ml-2" />
