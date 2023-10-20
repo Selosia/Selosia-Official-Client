@@ -10,7 +10,7 @@ const BlogBanner = () => {
           alt=""
         />
       </div>
-      <div className="text-center -mt-36 text-white">
+      <div className="text-center -mt-36 space-y-2 text-white">
         <h2 className="text-4xl">Our Blogs</h2>
         <p>Fueling Your Imagination Through Our Blog Network</p>
       </div>

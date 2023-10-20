@@ -56,12 +56,12 @@ const BlogsRightSide = ({ sideData }) => {
       </div>
 
       {/* Latest Posts */}
-      <div className="space-y-4 text-[#5A5A5A] py-8">
+      {/* <div className="space-y-4 text-[#5A5A5A] py-8">
         <h3 className="text-3xl ">Latest Posts</h3>
         <hr />
-      </div>
+      </div> */}
       {/* Category */}
-      <div className="space-y-4 text-[#5A5A5A] py-8">
+      {/* <div className="space-y-4 text-[#5A5A5A] py-8">
         <h3 className="text-3xl ">Category</h3>
         <hr />
         <h3 className="text-xl">Category 1</h3>
@@ -74,7 +74,7 @@ const BlogsRightSide = ({ sideData }) => {
         <hr />
         <h3 className="text-xl">Category 5</h3>
         <hr />
-      </div>
+      </div> */}
     </div>
   );
 };

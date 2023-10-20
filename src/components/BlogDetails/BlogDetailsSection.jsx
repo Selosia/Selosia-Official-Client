@@ -5,9 +5,9 @@ const BlogDetailsSection = ({ blogInfo }) => {
   return (
     <div>
       <div className="bg-amber-50 max-w-screen-lg mx-auto p-3">
-        <h1 className="font-bold text-2xl mb-5 text-amber-400 underline underline-offset-4">
+        {/* <h1 className="font-bold text-2xl mb-5 text-amber-400 underline underline-offset-4">
           {blogInfo?.data?.subCategory}
-        </h1>
+        </h1> */}
         <div className="w-full h-80 overflow-hidden rounded-lg">
           <img
             className="w-full"
