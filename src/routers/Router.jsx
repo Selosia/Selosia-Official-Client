@@ -248,7 +248,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/admin-profile/dashboard/dynamic-provable-buyer-profile",
+        path: "/admin-profile/dashboard/dynamic-provable-buyer-profile/:email",
         element: (
           <PrivateRoute>
             <AdminRoute>
@@ -256,16 +256,17 @@ const router = createBrowserRouter([
             </AdminRoute>
           </PrivateRoute>
         ),
+        loader: ({ params }) => fetch(`https://codexriddle-official-server.vercel.app/api/v1/user/provableBuyer/${params.email}`),
       },
       {
-        path: "/admin-profile/dashboard/dynamic-actual-buyer-profile",
+        path: "/admin-profile/dashboard/dynamic-actual-buyer-profile/:email",
         element: (
           <PrivateRoute>
             <AdminRoute>
               <DynamicActualBuyerProfile />
             </AdminRoute>
           </PrivateRoute>
-        ),
+        ),loader: ({ params }) => fetch(`https://codexriddle-official-server.vercel.app/api/v1/user/all-actualBuyer/${params.email}`),
       },
       {
         path: "/admin-profile/dashboard/add-service",
