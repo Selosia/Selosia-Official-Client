@@ -10,6 +10,7 @@ import developer from "../../assets/icon/developer.png";
 import buyer from "../../assets/icon/client.png";
 import other from "../../assets/icon/other.png";
 import meet from "../../assets/icon/meet.png";
+import DevelopersMailSenderModal from "../../modals/DevelopersMailSenderModal";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -45,7 +46,7 @@ const Profile = () => {
             {/* Body */}
             <div className="text-center rounded-t-lg p-12 ">
               <img
-                className="avatar w-24 h-24 rounded-full"
+                className="avatar w-24 h-24   rounded-full"
                 src={user?.photoURL}
                 alt=""
               />
@@ -129,92 +130,17 @@ const Profile = () => {
                     <img className="w-10 h-10" src={other} alt="" />
                     Mail to Others
                   </button>
-                  {/* <button
-                  type="button"
-                  className="rounded bg-red-400 text-white hover:scale-90 duration-700 hidden md:block"
-                  data-hs-overlay="#Admin-Mail-Sender-Modal"
-                >
-                  Mail to Admins
-                </button> */}
-
-                  {/* <button
-                  type="button"
-                  className="rounded bg-red-400 text-white hover:scale-90 duration-700 hidden md:block"
-                  data-hs-overlay="#Developers-Mail-Sender-Modal"
-                >
-                  Mail to Developers
-                </button> */}
-
-                  {/* <button
-                  type="button"
-                  className="rounded bg-red-400 text-white hover:scale-90 duration-700 hidden md:block"
-                  data-hs-overlay="#Buyers-Mail-Sender-Modal"
-                >
-                  Mail to Buyers
-                </button> */}
-
-                  {/* <button
-                  type="button"
-                  className="rounded bg-red-400 text-white hover:scale-90 duration-700 hidden md:block"
-                  data-hs-overlay="#Others-Mail-Sender-Modal"
-                >
-                  Mail to Others
-                </button> */}
                 </div>
               </>
               {/* } */}
             </div>
 
             <OthersMailSenderModal />
+            <DevelopersMailSenderModal />
             <AdminsMailSenderModal />
             <BuyersMailSenderModal />
           </div>
         </div>
-
-        {/* {
-        userType === 'Admin' && */}
-        {/* <div className="mt-5 space-y-3 md:hidden m-1">
-          <div>
-            <button
-              type="button"
-              className="rounded bg-red-400 text-white hover:scale-90 duration-700  w-full mx-auto"
-              data-hs-overlay="#Admin-Mail-Sender-Modal"
-            >
-              Mail to Admins
-            </button>
-          </div>
-
-          <div>
-            <button
-              type="button"
-              className="rounded bg-red-400 text-white hover:scale-90 duration-700 w-full mx-auto"
-              data-hs-overlay="#Developers-Mail-Sender-Modal"
-            >
-              Mail to Developers
-            </button>
-          </div>
-
-          <div>
-            <button
-              type="button"
-              className="rounded bg-red-400 text-white hover:scale-90 duration-700 w-full mx-auto"
-              data-hs-overlay="#Buyers-Mail-Sender-Modal"
-            >
-              Mail to Buyers
-            </button>
-          </div>
-
-          <div>
-            <button
-              type="button"
-              className="rounded bg-red-400 text-white hover:scale-90 duration-700 w-full mx-auto"
-              data-hs-overlay="#Others-Mail-Sender-Modal"
-            >
-              Mail to Others
-            </button>
-          </div>
-        </div> */}
-        {/* } */}
       </div>
     </div>
   );
