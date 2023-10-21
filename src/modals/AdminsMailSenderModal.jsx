@@ -28,13 +28,16 @@ const AdminsMailSenderModal = () => {
     const message = form.message.value;
 
     axios
-      .post(`https://codexriddle-official-server.vercel.app/api/v1/sendMail/mailToDev`, {
-        sender: user.email,
-        receiver,
-        receiverName,
-        subject,
-        message,
-      })
+      .post(
+        `https://codexriddle-official-server.vercel.app/api/v1/sendMail/mailToDev`,
+        {
+          sender: user.email,
+          receiver,
+          receiverName,
+          subject,
+          message,
+        }
+      )
       .then((res) => {
         console.log(res);
       })
