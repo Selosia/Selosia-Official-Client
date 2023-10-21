@@ -5,13 +5,14 @@ const useUserType = (email) => {
     const [userType,setUserType] = useState()
     const [loading,setLoading] = useState(true)
 
+
     useEffect(()=>{
         if(email){
-            fetch(`https://web-tech-official-server.vercel.app/email/${email}`)
+            fetch(`https://selosia-official-server.vercel.app/api/v1/user?email=${email}`)
             .then(res => res.json())
             .then(data => {
                 // response was in result ...
-                setUserType(data.result.role)
+                setUserType(data.data.role)
                 setLoading(false)
             })
         }

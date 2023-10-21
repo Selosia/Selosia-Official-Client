@@ -8,6 +8,7 @@ const AdminRoute = ({ children }) => {
   const [userType, loading] = useUserType(user?.email);
   const location = useLocation();
 
+
   if (!loading && userType === "Admin") {
     return children;
   }

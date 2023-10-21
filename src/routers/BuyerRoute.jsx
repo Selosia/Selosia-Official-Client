@@ -1,13 +1,15 @@
 import { useContext } from "react";
 import { Navigate, useLocation } from "react-router";
 import { AuthContext } from "../context/AuthProvider";
+import useUserType from "../hooks/useUserType";
 
 const BuyerRoute = ({ children }) => {
-  const { loading, logUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  const [userType, loading] = useUserType(user?.email);
 
   const location = useLocation();
 
-  if (logUser?.role === "Buyer") {
+  if (!loading && userType === "Buyer") {
     return children;
   }
 
