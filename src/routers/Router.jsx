@@ -266,7 +266,7 @@ const router = createBrowserRouter([
               <DynamicActualBuyerProfile />
             </AdminRoute>
           </PrivateRoute>
-        ),loader: ({ params }) => fetch(`https://codexriddle-official-server.vercel.app/api/v1/user/all-actualBuyer/${params.email}`),
+        ),loader: ({ params }) => fetch(`https://selosia-official-server.vercel.app/api/v1/user?email=${params.email}`),
       },
       {
         path: "/admin-profile/dashboard/add-service",
