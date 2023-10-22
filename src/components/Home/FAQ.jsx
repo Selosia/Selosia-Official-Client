@@ -1,6 +1,6 @@
 import Lottie from "lottie-react";
 // import faqAnimation from "../../assets/Animations/faqAnimation.json";
-import faq from "../../assets/Image/FAQs-.svg";
+import faq from "../../assets/Animations/faq.json";
 
 const FAQ = () => {
   return (
@@ -108,8 +108,8 @@ const FAQ = () => {
         {/* animation site  */}
         <div className="lg:w-1/2">
           <div className="lg:w-1/2 rounded-lg ">
-            {/* <Lottie animationData={faqAnimation} loop={true} /> */}
-            <img src={faq} alt="" />
+            <Lottie animationData={faq} loop={true} />
+            {/* <img src={faq} alt="" /> */}
           </div>
           <div>
             <h1 className="text-2xl mb-4  title text-start text-gray-800 capitalize lg:text-3xl dark:text-white">

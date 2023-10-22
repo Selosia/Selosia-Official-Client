@@ -35,6 +35,8 @@ import PrivateRoute from "./PrivateRoute";
 import BuyerRoute from "./BuyerRoute";
 import AdminRoute from "./AdminRoute";
 import Error from "../pages/Error";
+import TermsAndConditions from "../pages/TermsAndConditions";
+import Privacy from "../pages/Privacy";
 
 const router = createBrowserRouter([
   /* ---------------------------- Main routes--------------------------- */
@@ -56,9 +58,20 @@ const router = createBrowserRouter([
         element: <Blog />,
       },
       {
+        path: "/terms&Condition",
+        element: <TermsAndConditions />,
+      },
+      {
+        path: "/privacy",
+        element: <Privacy />,
+      },
+      {
         path: "/dynamic-blog/:id",
         element: <BlogDetails />,
-        loader: ({ params }) => fetch(`https://web-tech-official-server.vercel.app/blog/dynamic/${params.id}`),
+        loader: ({ params }) =>
+          fetch(
+            `https://web-tech-official-server.vercel.app/blog/dynamic/${params.id}`
+          ),
       },
     ],
   },
@@ -225,7 +238,10 @@ const router = createBrowserRouter([
             </AdminRoute>
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`https://web-tech-official-server.vercel.app/dynamic-new-task/${params.id}`),
+        loader: ({ params }) =>
+          fetch(
+            `https://web-tech-official-server.vercel.app/dynamic-new-task/${params.id}`
+          ),
       },
       {
         path: "/admin-profile/dashboard/working-all-projects-list",
@@ -256,7 +272,10 @@ const router = createBrowserRouter([
             </AdminRoute>
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`https://codexriddle-official-server.vercel.app/api/v1/user/provableBuyer/${params.email}`),
+        loader: ({ params }) =>
+          fetch(
+            `https://codexriddle-official-server.vercel.app/api/v1/user/provableBuyer/${params.email}`
+          ),
       },
       {
         path: "/admin-profile/dashboard/dynamic-actual-buyer-profile/:email",
@@ -266,7 +285,11 @@ const router = createBrowserRouter([
               <DynamicActualBuyerProfile />
             </AdminRoute>
           </PrivateRoute>
-        ),loader: ({ params }) => fetch(`https://selosia-official-server.vercel.app/api/v1/user?email=${params.email}`),
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://selosia-official-server.vercel.app/api/v1/user?email=${params.email}`
+          ),
       },
       {
         path: "/admin-profile/dashboard/add-service",
@@ -328,7 +351,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://web-tech-official-server.vercel.app/dynamic-submitted-task/${params.id}`),
+          fetch(
+            `https://web-tech-official-server.vercel.app/dynamic-submitted-task/${params.id}`
+          ),
       },
       {
         path: "/admin-profile/dashboard/trash-bin",
