@@ -22,6 +22,7 @@ import signOut from "../../assets/image/signOut.png";
 
 const DashboardSearchNav = () => {
   const { user, theme, setTheme } = useContext(AuthContext);
+  // console.log(user);
 
   // get user type .. form custom hook .. userUserType()
   // const [userType] = useUserType(user?.email);
@@ -247,10 +248,10 @@ const DashboardSearchNav = () => {
           {/* Dropdown by clicking user image */}
           <ul
             tabIndex={0}
-            className="mt-3 z-[1] p-2  shadow menu menu-sm dropdown-content  rounded-box w-60"
+            className="mt-3 z-[1] p-2   shadow menu menu-sm dropdown-content  rounded-box w-60"
           >
-            <li className="">
-              <a className="justify-between px-5 py-2 font-bold ">
+            <li>
+              <a className="flex justify-start font-bold  h-10 ">
                 {user?.displayName}
               </a>
             </li>
@@ -258,7 +259,7 @@ const DashboardSearchNav = () => {
             <li>
               <div className="flex py-2">
                 <img className="w-6 h-6" src={signOut} alt="" />
-                <a className="font-bold">Logout</a>
+                <a className="font-bold text-red-500">Logout</a>
               </div>
             </li>
 
