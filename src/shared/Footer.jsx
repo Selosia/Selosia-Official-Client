@@ -6,6 +6,7 @@ import {
   BsLinkedin,
 } from "react-icons/bs";
 import FooterLogoStyle from "../utils/Footer/FooterLogoStyle";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -18,7 +19,12 @@ const Footer = () => {
             </div>
 
             <p>
-            At Selosias, were more than just a technology company – were your digital partner. Founded with a vision to empower businesses through innovative web solutions, we have evolved into a passionate team of tech enthusiasts. With years of experience, we have successfully delivered cutting-edge websites, e-commerce platforms, and IT solutions that drive growth and success.
+              At Selosias, were more than just a technology company – were your
+              digital partner. Founded with a vision to empower businesses
+              through innovative web solutions, we have evolved into a
+              passionate team of tech enthusiasts. With years of experience, we
+              have successfully delivered cutting-edge websites, e-commerce
+              platforms, and IT solutions that drive growth and success.
             </p>
 
             <div className="py-5">
@@ -148,24 +154,20 @@ const Footer = () => {
                       </a>
                     </li>
                     <li>
-                      <a
-                        href="#"
-                        title=""
+                      <Link
+                        to={"/terms&Condition"}
                         className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
                       >
-                        {" "}
                         Terms & Conditions{" "}
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                        href="#"
-                        title=""
+                      <Link
+                        to={"/privacy"}
                         className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
                       >
-                        {" "}
                         Privacy Policy{" "}
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -239,26 +241,6 @@ const Footer = () => {
                       >
                         {" "}
                         Delivery Details{" "}
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        title=""
-                        className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
-                      >
-                        {" "}
-                        Terms & Conditions{" "}
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        title=""
-                        className="text-base text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
-                      >
-                        {" "}
-                        Privacy Policy{" "}
                       </a>
                     </li>
                   </ul>
