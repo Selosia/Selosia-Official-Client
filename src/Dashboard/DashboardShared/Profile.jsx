@@ -55,6 +55,7 @@ const Profile = () => {
                   <p className="text-3xl font-normal title text-black ">
                     {user?.displayName}
                   </p>
+
                   <p className="text-base hidden lg:block font-semibold  gap-2">
                     <span className="text-[#26BFC7] font-bold title">
                       {logUser?.role}
@@ -63,9 +64,8 @@ const Profile = () => {
                 </div>
                 <p className="text-md font-bold text-black ">{user?.email}</p>
               </div>
-              <div className="flex lg:hidden flex-col gap-4">
+              <div className="flex items-center justify-center lg:hidden flex-col gap-4">
                 <p className="text-base font-semibold flex gap-2">
-                  <span className="font-bold text-xl">Role :</span>
                   <span className="title text-xl text-[#26BFC7]">
                     {logUser?.role}
                   </span>
@@ -80,7 +80,7 @@ const Profile = () => {
               <>
                 {/* {
                 userType === 'Admin' && */}
-                <div className="gap-2 md:hidden btn btn-outline flex cursor-pointer hover:bg-[#26BFC7] title hover:border-[#26BFC7]">
+                <div className="gap-2 md:hidden btn btn-outline flex justify-start cursor-pointer hover:bg-[#26BFC7] title hover:border-[#26BFC7]">
                   <img className="w-8 h-8" src={meet} alt="" />
                   <a
                     title="Click to join the meeting"
@@ -103,28 +103,28 @@ const Profile = () => {
               <>
                 <div className="grid lg:grid-cols-3  grid-cols-1 lg:space-y-0 space-y-2 lg:gap-3   lg:w-full  ">
                   <button
-                    className="btn btn-outline w-full transition-all duration-500 hover:bg-[#26BFC7] title hover:border-[#26BFC7]"
+                    className=" btn btn-outline  flex justify-start w-full transition-all duration-500 hover:bg-[#26BFC7] title hover:border-[#26BFC7]"
                     data-hs-overlay="#Admin-Mail-Sender-Modal"
                   >
                     <img className="w-10 h-10" src={admin} alt="" />
                     Mail to Admins
                   </button>
                   <button
-                    className="btn btn-outline transition-all duration-500 hover:bg-[#26BFC7] title  w-full hover:border-[#26BFC7]"
+                    className=" flex justify-start btn btn-outline transition-all duration-500 hover:bg-[#26BFC7] title  w-full hover:border-[#26BFC7]"
                     data-hs-overlay="#Developers-Mail-Sender-Modal"
                   >
                     <img className="w-10 h-10" src={developer} alt="" />
                     Mail to Developer
                   </button>
                   <button
-                    className="btn btn-outline transition-all duration-500 hover:bg-[#26BFC7] title w-full  hover:border-[#26BFC7]"
+                    className=" flex justify-start btn btn-outline transition-all duration-500 hover:bg-[#26BFC7] title w-full  hover:border-[#26BFC7]"
                     data-hs-overlay="#Buyers-Mail-Sender-Modal"
                   >
                     <img className="w-10 h-10" src={buyer} alt="" />
                     Mail to Buyers
                   </button>
                   <button
-                    className="btn btn-outline transition-all duration-500 hover:bg-[#26BFC7] title w-full  hover:border-[#26BFC7]"
+                    className=" flex justify-start btn btn-outline transition-all duration-500 hover:bg-[#26BFC7] title w-full  hover:border-[#26BFC7]"
                     data-hs-overlay="#Others-Mail-Sender-Modal"
                   >
                     <img className="w-10 h-10" src={other} alt="" />
