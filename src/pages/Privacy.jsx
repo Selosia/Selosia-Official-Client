@@ -1,6 +1,6 @@
 const Privacy = () => {
   return (
-    <div>
+    <div className="h-screen">
       <h1>
         privacy Lorem ipsum dolor sit, amet consectetur adipisicing elit.
         Laudantium, odit?
