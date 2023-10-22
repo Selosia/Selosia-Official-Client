@@ -7,12 +7,14 @@ const BlogDetails = () => {
   const blog = useLoaderData();
   // console.log(blog);
   return (
-    <div className="space-y-20">
+    <div className="space-y-20 lg:mt-32">
       <BlogBanner />
 
       {/* <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 px-10 py-20"> */}
       {/* Dynamic Blog will display in this section */}
-      <div className="md:col-span-9">
+      <div
+      // className="md:col-span-9"
+      >
         <BlogDetailsSection blogInfo={blog} />
       </div>
       {/*  This is the sidebar */}
