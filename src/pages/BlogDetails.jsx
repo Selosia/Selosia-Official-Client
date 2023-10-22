@@ -10,16 +10,16 @@ const BlogDetails = () => {
     <div className="space-y-20">
       <BlogBanner />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 px-10 py-20">
-        {/* Dynamic Blog will display in this section */}
-        <div className="md:col-span-9">
-          <BlogDetailsSection blogInfo={blog} />
-        </div>
-        {/*  This is the sidebar */}
-        <div className="md:col-span-3 ">
-          <BlogsRightSide />
-        </div>
+      {/* <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 px-10 py-20"> */}
+      {/* Dynamic Blog will display in this section */}
+      <div className="md:col-span-9">
+        <BlogDetailsSection blogInfo={blog} />
       </div>
+      {/*  This is the sidebar */}
+      {/* <div className="md:col-span-3 ">
+          <BlogsRightSide />
+        </div> */}
+      {/* </div> */}
     </div>
   );
 };
