@@ -1,23 +1,11 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { BsXLg } from "react-icons/bs";
 import { AuthContext } from "../context/AuthProvider";
+import developer from "../../src/assets/icon/developer.png";
 
 const DevelopersMailSenderModal = () => {
   const { user } = useContext(AuthContext);
-  const [developerEmails, setDeveloperEmail] = useState();
-
-  // get developer from all users
-  useEffect(() => {
-    fetch("https://web-tech-official-server.vercel.app/all-users")
-      .then((res) => res.json())
-      .then((data) => {
-        const developer = data.filter((user) => {
-          return user?.role.includes("developer");
-        });
-        setDeveloperEmail(developer);
-      });
-  }, []);
 
   // Send Mail function
   const sendMailToDeveloper = (e) => {
@@ -66,47 +54,43 @@ const DevelopersMailSenderModal = () => {
 
             <div>
               <div className="m-5">
-                <h1 className="title">Developers list...</h1>
-
-                <ol>
-                  {developerEmails?.map((developerEmail, idx) => (
-                    <li key={idx} className="flex gap-2 font-semibold">
-                      <span>{idx + 1}</span>
-                      <span>{developerEmail?.email}</span>
-                    </li>
-                  ))}
-                </ol>
+                <div className=" flex gap-2 justify-center">
+                  <img className="h-10 w-10 mt-1" src={developer} alt="" />
+                  <h1 className="title ">
+                    Send Mail to <br /> developer
+                  </h1>
+                </div>
 
                 <form onSubmit={sendMailToDeveloper} className="space-y-3 mt-5">
-                  <div className="border border-gray-500 rounded-lg flex items-center">
+                  <div className="border border-gray-500 rounded-md flex items-center">
                     {/* <span className="ml-2">To:</span> */}
                     <input
                       type="email"
                       name="email"
                       placeholder="Developer Email"
-                      className="w-full px-3 py-2 rounded-lg bg-white focus outline-none  "
+                      className="w-full px-3 py-2 rounded-md bg-white focus outline-none  "
                       required
                     />
                   </div>
 
-                  <div className="border border-gray-500 rounded-lg flex items-center">
+                  <div className="border border-gray-500 rounded-md flex items-center">
                     {/* <span className="ml-2">Subject:</span> */}
                     <input
                       type="text"
                       name="purpose"
                       placeholder="Your Purpose"
-                      className="w-full px-3 py-2 rounded-lg bg-white focus outline-none  "
+                      className="w-full px-3 py-2 rounded-md bg-white focus outline-none  "
                       required
                     />
                   </div>
 
-                  <div className="border border-gray-500 rounded-lg flex items-center">
+                  <div className="border border-gray-500 rounded-md flex items-center">
                     {/* <span className="ml-2 -mt-20">Body:</span> */}
                     <textarea
                       name="purposeDetails"
                       placeholder="Purpose Details"
                       cols="30"
-                      className="w-full px-3 py-2 rounded-lg bg-white focus outline-none"
+                      className="w-full px-3 py-2 rounded-md bg-white focus outline-none"
                       rows="5"
                     ></textarea>
                   </div>
