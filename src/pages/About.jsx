@@ -6,12 +6,15 @@ import ExperienceTrust from "../components/About/ExperienceTrust";
 import MissionVission from "../components/About/MissionVission";
 import OurStories from "../components/About/OurStories";
 import WhoWeAre from "../components/About/WhoWeAre";
+import AboutBanner from "../components/About/AboutBanner";
 
 const About = () => {
   return (
     <div className="space-y-10 mt-32">
       {/* <CursorMovingAnimation /> */}
-
+      <div>
+        <AboutBanner/>
+      </div>
       <div>
         <WhoWeAre />
       </div>
