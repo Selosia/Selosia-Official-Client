@@ -7,7 +7,9 @@ const MyOrders = () => {
   useEffect(() => {
     fetch(
       `https://selosia-official-server.vercel.app/api/v1/project/orderedProject?email=${user?.email}`
-    ).then((res) => res.json());
+    )
+      .then((res) => res.json())
+      .then((data) => setMyOrder(data?.data));
   }, [user?.email]);
   return (
     <div>
@@ -15,44 +17,47 @@ const MyOrders = () => {
         <table className="min-w-full divide-y-2  divide-gray-200 bg-white text-sm">
           <thead className="ltr:text-left  title rtl:text-right">
             <tr>
-              <th className="whitespace-nowrap px-4 py-2 font-semibold text-gray-900">
+              <th className="whitespace-nowrap px-4 py-2 font-semibold ">
                 Serial no
               </th>
-              <th className="whitespace-nowrap px-4 py-2 font-semibold text-gray-900">
+              <th className="whitespace-nowrap px-4 py-2 font-semibold ">
                 Project Name
               </th>
-              <th className="whitespace-nowrap px-4 py-2 font-semibold text-gray-900">
+              <th className="whitespace-nowrap px-4 py-2 font-semibold ">
                 Domain Name
               </th>
-              <th className="whitespace-nowrap px-4 py-2 font-semibold text-gray-900">
+              <th className="whitespace-nowrap px-4 py-2 font-semibold ">
                 Category
               </th>
-              <th className="whitespace-nowrap px-4 py-2 font-semibold text-gray-900">
+              <th className="whitespace-nowrap px-4 py-2 font-semibold ">
                 Status
               </th>
-              <th className="whitespace-nowrap px-4 py-2 font-semibold text-gray-900">
-                Order Date Date
+              <th className="whitespace-nowrap px-4 py-2 font-semibold ">
+                Order Date
               </th>
             </tr>
           </thead>
-          {/* <tbody className="divide-y  divide-gray-200">
-            {items && items.length > 0 ? (
-              items.map((data, i) => (
+          <tbody className="divide-y  divide-gray-200">
+            {myOrders && myOrders.length > 0 ? (
+              myOrders.map((data, i) => (
                 <tr key={data.id}>
-                  <td className="whitespace-nowrap px-4 text-center py-2  text-gray-900">
+                  <td className="whitespace-nowrap px-4 text-center py-2  ">
                     {i + 1}
                   </td>
-                  <td className="whitespace-nowrap px-4 text-center py-2  text-gray-900">
-                    {data?.name}
+                  <td className="whitespace-nowrap px-4 text-center py-2  ">
+                    {data?.projectName}
                   </td>
-                  <td className="whitespace-nowrap px-4 py-2 text-center text-gray-700">
-                    {data?.email}
+                  <td className="whitespace-nowrap px-4 py-2 text-center ">
+                    {data?.domainName}
                   </td>
-                  <td className="whitespace-nowrap px-4 py-2 text-center text-gray-700">
-                    {data?.domain}
+                  <td className="whitespace-nowrap px-4 py-2 text-center ">
+                    {data?.category}
                   </td>
-                  <td className="whitespace-nowrap px-4 py-2 text-center text-gray-700">
-                    {data?.date.slice(0, 10)}
+                  <td className="whitespace-nowrap  px-4 py-2 text-center ">
+                    {data?.status}
+                  </td>
+                  <td className="whitespace-nowrap px-4 py-2 text-center ">
+                    {data?.OrderDate.slice(0, 10)}
                   </td>
                 </tr>
               ))
@@ -66,7 +71,7 @@ const MyOrders = () => {
                 </td>
               </tr>
             )}
-          </tbody> */}
+          </tbody>
         </table>
       </div>
     </div>
