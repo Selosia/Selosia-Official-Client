@@ -15,46 +15,6 @@ const AllCompletedTask = () => {
       .then((data) => setItems(data?.data));
   }, []);
 
-  // const [pageCount, setpageCount] = useState(0);
-  // let limit = 10;
-  // useEffect(() => {
-  //   const getSubmittedProject = async () => {
-  //     const res = await fetch(
-  //       `https://codexriddle-official-server.vercel.app/api/v1/project/all-submittedProject?_page=1&_limit=${limit}`
-  //     );
-  //     const data = await res.json();
-  //     const total = res.headers.get("x-total-count");
-  //     setpageCount(Math.ceil(total / limit));
-
-  //     setItems(data.data);
-  //   };
-
-  //   getSubmittedProject();
-  // }, [limit]);
-  // console.log(pageCount);
-  // const fetchSubmittedProject = async (currentPage) => {
-  //   const res = await fetch(
-  //     `https://codexriddle-official-server.vercel.app/api/v1/project/all-submittedProject?_page=${currentPage}&_limit=${limit}`
-  //   );
-  //   const data = await res.json();
-  //   return data;
-  // };
-
-  // const handlePageClick = async (data) => {
-  //   console.log(data.selected);
-  //   let currentPage = data.selected + 1;
-  //   const submittedProjectFromServer = await fetchSubmittedProject(currentPage);
-  //   setpageCount(Math.ceil(submittedProjectFromServer.total / limit));
-  //   setItems(submittedProjectFromServer.data);
-  // };
-  // console.log(items);
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://web-tech-official-server.vercel.app/submittedProject`)
-  //     .then((res) => {
-  //       setData(res.data.data);
-  //     });
-  // }, []);
   return (
     <>
       <AllSubmittedTaskHeading
@@ -62,9 +22,9 @@ const AllCompletedTask = () => {
         numberHeading={"Total Number"}
         task={items?.length}
       ></AllSubmittedTaskHeading>
-      <div className="max-h-[70vh] overflow-auto min-h-[20vh]">
-        <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
-          <thead className="ltr:text-left rtl:text-right">
+      <div className="p-10 max-h-[73vh] overflow-auto min-h-[20vh]">
+        <table className="min-w-full divide-y-2  divide-gray-200 bg-white text-sm">
+          <thead className="ltr:text-left  title rtl:text-right">
             <tr>
               <th className="whitespace-nowrap px-4 py-2 font-semibold text-gray-900">
                 Serial no
@@ -83,7 +43,7 @@ const AllCompletedTask = () => {
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y  divide-gray-200">
             {items && items.length > 0 ? (
               items.map((data, i) => (
                 <tr key={data.id}>
@@ -100,7 +60,7 @@ const AllCompletedTask = () => {
                     {data?.domain}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-center text-gray-700">
-                    {data?.date}
+                    {data?.date.slice(0, 10)}
                   </td>
                 </tr>
               ))
@@ -110,7 +70,7 @@ const AllCompletedTask = () => {
                   colSpan="5"
                   className="text-center text-2xl text-red-500 py-10"
                 >
-                  Data is not available
+                  There is no data available.
                 </td>
               </tr>
             )}
