@@ -70,7 +70,7 @@ const router = createBrowserRouter([
         element: <BlogDetails />,
         loader: ({ params }) =>
           fetch(
-            `https://web-tech-official-server.vercel.app/blog/dynamic/${params.id}`
+            `https://selosia-official-server.vercel.app/blog/dynamic/${params.id}`
           ),
       },
     ],
@@ -127,41 +127,41 @@ const router = createBrowserRouter([
   {
     path: "/actual-buyer/dashboard",
     element: (
-      <PrivateRoute>
-        <BuyerRoute>
-          <ActualBuyerDashboard />
-        </BuyerRoute>
-      </PrivateRoute>
+      // <PrivateRoute>
+      //   <BuyerRoute>
+      <ActualBuyerDashboard />
+      //   </BuyerRoute>
+      // </PrivateRoute>
     ),
     children: [
       {
         path: "/actual-buyer/dashboard",
         element: (
-          <PrivateRoute>
-            <BuyerRoute>
-              <Profile />
-            </BuyerRoute>
-          </PrivateRoute>
+          // <PrivateRoute>
+          //   <BuyerRoute>
+          <Profile />
+          //   </BuyerRoute>
+          // </PrivateRoute>
         ),
       },
       {
         path: "/actual-buyer/dashboard/my-orders",
         element: (
-          <PrivateRoute>
-            <BuyerRoute>
-              <MyOrders />
-            </BuyerRoute>
-          </PrivateRoute>
+          // <PrivateRoute>
+          //   <BuyerRoute>
+          <MyOrders />
+          //   </BuyerRoute>
+          // </PrivateRoute>
         ),
       },
       {
         path: "/actual-buyer/dashboard/order-now",
         element: (
-          <PrivateRoute>
-            <BuyerRoute>
-              <OrderNow />
-            </BuyerRoute>
-          </PrivateRoute>
+          // <PrivateRoute>
+          //   <BuyerRoute>
+          <OrderNow />
+          //   </BuyerRoute>
+          // </PrivateRoute>
         ),
       },
     ],

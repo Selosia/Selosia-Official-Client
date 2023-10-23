@@ -1,18 +1,17 @@
 import { useContext } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import {
-    BsBookmarkStarFill,
-    BsFillDoorOpenFill,
-    BsSoundwave,
-    BsStackOverflow,
+  BsBookmarkStarFill,
+  BsFillDoorOpenFill,
+  BsSoundwave,
+  BsStackOverflow,
 } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../context/AuthProvider";
 
 const UserDashboardSidebar = () => {
-  const { user, logOut } = useContext(AuthContext);
-  // console.log(user);
+  const { logOut } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -85,17 +84,6 @@ const UserDashboardSidebar = () => {
             </p>
           </li>
         </ul>
-
-        {/* Bottom User Info */}
-        <div className="flex justify-center mx-5 px-5 mt-28 mb-5 py-5 bg-emerald-50">
-          <div>
-            <div className="flex justify-center">
-              <img src={user?.photoURL} className="h-12 w-12 rounded-full" />
-            </div>
-            <p className="text-center">{user?.displayName}</p>
-            <p className="text-center">{user?.email}</p>
-          </div>
-        </div>
       </div>
     </Scrollbars>
   );
