@@ -16,7 +16,8 @@ const DynamicBlog = ({ dynamicBlogs }) => {
   return (
     <div className="max-w-screen-xl h-full space-y-12">
       <div className="space-y-12 lg:space-y-0">
-        {dynamicBlogs?.map((data, i) => (
+        {
+        dynamicBlogs?.map((data, i) => (
           <div key={i + 1}>
             <div className="flex flex-col lg:mt-10 md:flex-row  gap-8">
               <div className="w-full ">
