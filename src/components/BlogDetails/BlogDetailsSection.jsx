@@ -21,7 +21,7 @@ const BlogDetailsSection = ({ blogInfo }) => {
             <h1 className="font-semibold mt-5">{blogInfo?.data?.dates}</h1>
           </div>
           <h1 className="font-semibold text-3xl">{blogInfo?.data?.title}</h1>
-          <p className="w-full ">{blogInfo?.data?.description}</p>
+          <pre className="w-full whitespace-break-spaces font-serif">{blogInfo?.data?.description}</pre>
         </div>
 
         {/* blog comment section  */}
