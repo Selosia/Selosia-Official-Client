@@ -57,7 +57,10 @@ const MyOrders = () => {
                     {data?.status}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-center ">
-                    {data?.OrderDate.slice(0, 10)}
+                    {data?.OrderDate.slice(0, 10)
+                      .split("-")
+                      .reverse()
+                      .join("-")}
                   </td>
                 </tr>
               ))
