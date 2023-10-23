@@ -1,28 +1,31 @@
+import { Link } from "react-router-dom";
+import Navbar from "../shared/Navbar";
+import Footer from "../shared/Footer";
+
 const Error = () => {
-  const divStyle = {
-    backgroundImage: 'url("https://i.ibb.co/1d9fJVJ/brett-jordan-XWar9-Mb-NGUY-unsplash.jpg")',
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-  };
   return (
-    <section className=" h-screen" style={divStyle}>
-      <div className="bg-black opacity-80 h-screen">
-        <div className="flex flex-col justify-center items-center myComponent pt-32">
-          <div className="">
-            <img
-              className="w-28 h-28 rounded-full"
-              src="https://i.ibb.co/GJZRbRp/mulyadi-Zn-Lpr-In-KM7s-unsplash.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <h3 className="text-[#26BCE7] mt-10 text-5xl">Opps 404</h3>
-          </div>
-          <div className="mt-20 animate-bounce transition duration-1000 ease-in-out">
-            <p className="text-3xl font-bold text-[#26BCE7]">Page not found</p>
-          </div>
+    <section>
+      <Navbar />
+      <div className="main my-24 md:my-48 mx-6 md:mx-40 md:flex justify-center items-center">
+        <div className="left-error">
+          <img
+            className="h-80"
+            src="https://i.ibb.co/ZmjCr6p/website-page-not-found-error-404-robot-character-broken-chatbot-mascot-disabled-site-on-technical-wo.jpg"
+            alt=""
+          />
+        </div>
+        <div className="right-error">
+          <h2 className="text-4xl font-bold title">Sorry! Page not found</h2>
+          <p className="my-6 font-medium">
+            The page you are looking for does not exist. It may have been moved, or removed altogether. Perhaps you can
+            return back to the site’s homepage and see if you can find what you are looking for.
+          </p>
+          <Link to="/">
+            <button className="btn bg-[#26BEC7] hover:bg-[#26BFC7] text-white">Back To Homepage</button>
+          </Link>
         </div>
       </div>
+      <Footer />
     </section>
   );
 };
