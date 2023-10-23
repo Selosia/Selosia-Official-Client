@@ -88,7 +88,7 @@ const DashboardSearchNav = () => {
           </label>
 
           {/* Nested menu with drawer */}
-          <div className="drawer-side">
+          <div className="drawer-side z-30">
             <label htmlFor="my-drawer" className="drawer-overlay"></label>
 
             <ul className="space-y-1 menu min-h-full dark:bg-gray-800 bg-base-200 text-base-content">
@@ -248,7 +248,7 @@ const DashboardSearchNav = () => {
           {/* Dropdown by clicking user image */}
           <ul
             tabIndex={0}
-            className="mt-3 z-[1] p-2   shadow menu menu-sm dropdown-content  rounded-box w-60"
+            className="mt-3 z-30 p-2  bg-zinc-200  shadow menu menu-sm dropdown-content  rounded-box w-60"
           >
             <li>
               <a className="flex justify-start font-bold  h-10 ">
