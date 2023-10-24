@@ -40,7 +40,7 @@ const MyOrders = () => {
           <tbody className="divide-y  divide-gray-200">
             {myOrders && myOrders.length > 0 ? (
               myOrders.map((data, i) => (
-                <tr key={data.id}>
+                <tr key={i}>
                   <td className="whitespace-nowrap px-4 text-center py-2  ">
                     {i + 1}
                   </td>
@@ -57,7 +57,7 @@ const MyOrders = () => {
                     {data?.status}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-center ">
-                    {data?.OrderDate.slice(0, 10)
+                    {data?.OrderDate?.slice(0, 10)
                       .split("-")
                       .reverse()
                       .join("-")}
