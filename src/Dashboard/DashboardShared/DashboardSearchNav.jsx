@@ -52,8 +52,7 @@ const DashboardSearchNav = () => {
     };
   }, []);
 
-  // const time = String(new Date().toLocaleString());
-  console.log(time);
+  // console.log(time);
 
   //* set toggle button local storage for fixed with toggle
   const [isDarkMode, setIsDarkMode] = useState(
@@ -95,7 +94,7 @@ const DashboardSearchNav = () => {
   //* END
   // to find user rule
   const [logUser, setLogUser] = useState();
-  console.log(logUser);
+  // console.log(logUser);
   useEffect(() => {
     getCurrentUserInfo(user).then((response) => {
       console.log(response?.data);
