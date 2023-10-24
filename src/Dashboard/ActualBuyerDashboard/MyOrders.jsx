@@ -11,6 +11,9 @@ const MyOrders = () => {
       .then((res) => res.json())
       .then((data) => setMyOrder(data?.data));
   }, [user?.email]);
+
+
+  
   return (
     <div>
       <div className="p-10 max-h-[73vh] overflow-auto min-h-[20vh]">
