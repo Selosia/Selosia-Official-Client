@@ -46,7 +46,7 @@ const UserDashboardSidebar = () => {
         </div>
 
         {/* Sidebar Link */}
-        <ul>
+        <ul className="">
           <li>
             <Link
               to="/user-profile/dashboard"

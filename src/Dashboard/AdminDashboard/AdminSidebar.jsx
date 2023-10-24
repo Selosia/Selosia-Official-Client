@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
+import { FaUserAlt } from "react-icons/fa";
 import {
-  BsBookmarkStarFill,
   BsBoxArrowInUpLeft,
   BsEscape,
   BsFillDoorOpenFill,
@@ -10,7 +10,6 @@ import {
   BsStackOverflow,
 } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { AuthContext } from "../../context/AuthProvider";
 // Initialization for ES Users
 import { Dropdown, Ripple, initTE } from "tw-elements";
@@ -57,7 +56,7 @@ const AdminSidebar = () => {
                     shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)] 
                     rounded-lg bg-white p-2 group-hover:scale-125 duration-700"
               >
-                <BsBookmarkStarFill className=" group-hover:scale-125 duration-700" />
+                <FaUserAlt className=" group-hover:scale-125 duration-700" />
               </span>
               <span className="mt-2">Profile</span>
             </Link>
