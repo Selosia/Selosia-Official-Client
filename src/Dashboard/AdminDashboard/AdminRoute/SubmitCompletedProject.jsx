@@ -1,5 +1,6 @@
 import axios from "axios";
 import AddShowCaseProjectField from "./AddShowCaseProjectField";
+import Swal from "sweetalert2";
 
 const SubmitCompletedProject = () => {
   const handleSubmit = (e) => {
@@ -27,13 +28,17 @@ const SubmitCompletedProject = () => {
           )
           .then((res) => {
             if (res.data.data.insertedId) {
-              alert("Your Projects Successfully Submitted");
+              Swal.fire("Wow😲", `${title} successfully submitted`, "success");
               form.reset();
             }
           })
           .catch((err) => {
             if (err) {
-              alert("Something Went Wrong");
+              Swal.fire({
+                icon: "error",
+                title: "Oops👎",
+                text: "Something went wrong!",
+              });
             }
           });
       })
