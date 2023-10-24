@@ -10,7 +10,6 @@ import {
   BsStackOverflow,
 } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { AuthContext } from "../../context/AuthProvider";
 // Initialization for ES Users
 import { Dropdown, Ripple, initTE } from "tw-elements";
