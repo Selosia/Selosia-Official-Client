@@ -42,7 +42,7 @@ const ProvableBuyer = () => {
 
   useEffect(() => {
     fetch(
-      `https://codexriddle-official-server.vercel.app/api/v1/user/provableBuyer`
+      `https://selosia-official-server.vercel.app/api/v1/user/all-provableBuyer`
     )
       .then((res) => res.json())
       .then((data) => setBuyers(data?.data));

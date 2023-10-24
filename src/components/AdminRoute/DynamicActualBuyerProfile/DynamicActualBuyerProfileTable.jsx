@@ -42,10 +42,10 @@ const DynamicActualBuyerProfileTable = ({data}) => {
                       <p> {order.description}</p>
                     </td>
                     <td>
-                      <p> {order.OrderDate.slice(0,10)}</p>
+                      <p> {order.OrderDate?.slice(0,10)}</p>
                     </td>
                     <td>
-                      <p> {order.deliveryDate.slice(0,10)}</p>
+                      <p> {order.deliveryDate?.slice(0,10)}</p>
                     </td>
                     <td>
                     <p className="text-lime-500"> {order.status}</p>
