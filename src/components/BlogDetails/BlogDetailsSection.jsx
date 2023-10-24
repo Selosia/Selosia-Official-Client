@@ -1,13 +1,12 @@
 import BlogComments from "../BlogDetails/BlogComments";
+import RestOfBlogs from "./RestOfBlogs";
 
 const BlogDetailsSection = ({ blogInfo }) => {
   // console.log(blogInfo);
   return (
     <div>
       <div className="bg-amber-50 max-w-screen-lg mx-auto p-3">
-        {/* <h1 className="font-bold text-2xl mb-5 text-amber-400 underline underline-offset-4">
-          {blogInfo?.data?.subCategory}
-        </h1> */}
+      
         <div className="w-full h-80 overflow-hidden rounded-lg">
           <img
             className="w-full"
@@ -21,7 +20,7 @@ const BlogDetailsSection = ({ blogInfo }) => {
             <h1 className="font-semibold mt-5">{blogInfo?.data?.dates}</h1>
           </div>
           <h1 className="font-semibold text-3xl">{blogInfo?.data?.title}</h1>
-          <p className="w-full ">{blogInfo?.data?.description}</p>
+          <pre className="w-full whitespace-break-spaces font-serif">{blogInfo?.data?.description}</pre>
         </div>
 
         {/* blog comment section  */}
@@ -30,9 +29,10 @@ const BlogDetailsSection = ({ blogInfo }) => {
       </div>
       {/* load other rest of the blog...... */}
 
-      {/* <div>
-        <RestOfBlogs excludeBlog={blog?.data} />
-      </div> */}
+      <div>
+       
+        <RestOfBlogs excludeBlog={blogInfo?.data} />
+      </div>
     </div>
   );
 };

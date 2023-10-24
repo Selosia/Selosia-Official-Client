@@ -25,7 +25,7 @@ const BlogsRightSide = ({ sideData }) => {
       <div className="w-full flex gap-1">
         <input
           className="w-full border-2 border-black py-2 px-3 rounded-lg focus:outline-none"
-          placeholder=" Search"
+          placeholder="Search blog"
           type="text"
           value={searchQuery}
           onChange={handleSearchChange}
@@ -44,7 +44,7 @@ const BlogsRightSide = ({ sideData }) => {
           ?.slice(0, 5)
           ?.reverse()
           ?.map((data, idx) => (
-            <div key={idx}>
+            <div className="" key={idx}>
               <Link to={`/dynamic-blog/${data?._id}`}>
                 <div className="my-3  font-semibold text-[#26BFC7] hover:underline">
                   {data?.title}

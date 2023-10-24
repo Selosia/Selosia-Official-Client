@@ -1,10 +1,33 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import brandLogo from "../../assets/selosiaLOGO.png"
+import useUserType from "../../hooks/useUserType";
+import { toast } from "react-toastify";
 
 const MobileScreenNav = () => {
-    const {user} = useContext(AuthContext)
+    const {user,logOut} = useContext(AuthContext)
+    const [userType,loading] = useUserType(user?.email) 
+
+    
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    logOut();
+    navigate("/authentication/login");
+    toast.error("logged out!", {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
+  
+
     return (
         <header className="lg:hidden flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-[#26BFC7] text-sm py-4">
 
@@ -12,7 +35,7 @@ const MobileScreenNav = () => {
                 <div className="flex items-center justify-between">
                 <a className="flex-none text-xl font-semibold text-white" href="#"><img
             className="h-16"
-            src={brandLogo}
+            src='https://i.ibb.co/jWSxHpr/logo-BW-removebg-preview.png'
             alt="brandLOGO"
           /></a>
 
@@ -50,34 +73,72 @@ const MobileScreenNav = () => {
                         Blogs
                         </NavLink>
                         
+
+
+
+
                         {
-                        user?.uid ?
-                        <>
-                        <NavLink
-                            className={({ isActive }) => isActive ? "text-gray-800 border-b-4 w-12 block text-start" : "text-gray-800 block text-start"}
-                            to="/admin-profile/dashboard">
-                        Admin
-                        </NavLink>
-
-                        <NavLink
-                            className={({ isActive }) => isActive ? "text-gray-800 border-b-4 w-12 block text-start" : "text-gray-800 block text-start"}
-                            to="/actual-buyer/dashboard">
-                        Buyer
-                        </NavLink>
-
-                        <NavLink
-                            className={({ isActive }) => isActive ? "text-gray-800 border-b-4 w-12 block text-start" : "text-gray-800 block text-start"}
-                            to="/provable-buyer/dashboard">
-                        User
-                        </NavLink>
-                        </>
-                        :
-                        <NavLink
-                            className={({ isActive }) => isActive ? "text-gray-800 border-b-4 w-12 block text-start" : "text-gray-800 block text-start"}
-                            to="/authentication/logIn">
-                        Login
+                            userType === 'Admin'
+                            &&   
+                            <NavLink
+                            className={({ isActive }) =>
+                            isActive ?  "text-gray-800 border-b-4 w-12 block text-start" : "text-gray-800 block text-start"
+                            }
+                            to="/admin-profile/dashboard"
+                        >
+                            Dashboard
                         </NavLink>
                         }
+                        {
+                        userType === 'Buyer'
+                        &&  
+                        <NavLink
+                        className={({ isActive }) =>
+                            isActive ?  "text-gray-800 border-b-4 w-12 block text-start" : "text-gray-800 block text-start"
+                        }
+                        to="/actual-buyer/dashboard"
+                        >
+                         Dashboard
+                        </NavLink>
+
+                        }
+                        {
+                        userType === 'User'
+                        && 
+
+                        <NavLink
+                        className={({ isActive }) =>
+                            isActive ? "text-gray-800 border-b-4 w-12 block text-start" : "text-gray-800 block text-start"
+                        }
+                        to="/user/dashboard"
+                        >
+                         Dashboard
+                        </NavLink>
+                        }
+
+                        <NavLink  className="text-gray-800 block text-start"
+                        onClick={handleLogOut}>
+                            Logout
+                        </NavLink>
+
+
+
+                        {
+                        !user?.uid && 
+                            
+                        <NavLink
+                        className={({ isActive }) =>
+                        isActive ?  "text-gray-800 border-b-4 w-12 block text-start" : "text-gray-800 block text-start"
+                        }
+                        to="/authentication/logIn"
+                        >
+                            Login
+                        </NavLink>
+                        }
+
+
+
+
                     </nav>
                 </div>
                 </div>

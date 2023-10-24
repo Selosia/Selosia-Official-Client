@@ -97,7 +97,7 @@ const ProvableBuyer = () => {
                     </td>
                     <td>
                       <Link
-                        to={`/admin-profile/dashboard/dynamic-actual-buyer-profile/${buyer?.email}`}
+                        to={`/admin-profile/dashboard/dynamic-provable-buyer-profile/${buyer?.email}`}
                       >
                         <button className="bg-[#26BFC7] px-8 py-2 rounded text-white">
                           View

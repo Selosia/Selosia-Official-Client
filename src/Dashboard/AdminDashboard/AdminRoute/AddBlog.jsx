@@ -42,12 +42,11 @@ const AddBlog = () => {
             authorEmail : user?.email,
             authorImage : user?.photoURL,
             title,
-            description,
             subCategory,
-            dates,
-            blogImage: imgURL?.data?.url,
+            description,
+            date: dates,
+            blogImage: imgURL,
         };
-    
 
     
         postNewBlog(blogData)

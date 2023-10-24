@@ -25,11 +25,14 @@ const Blog = () => {
             <Loader />
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-12 max-w-screen-xl mx-auto gap-20 px-10 py-20">
-            <div className="md:col-span-9">
+          <div className="grid grid-cols-1 lg:grid-cols-12 max-w-screen-xl mx-auto gap-20  px-10 py-20">
+            <div className="md:col-span-3 lg:hidden ">
+              <BlogsRightSide sideData={sideData} />
+            </div>
+            <div className="md:col-span-9 mb-20 lg:mb-0">
               <DynamicBlog dynamicBlogs={dynamicBlogs} />
             </div>
-            <div className="md:col-span-3">
+            <div className="md:col-span-3 hidden lg:block">
               <BlogsRightSide sideData={sideData} />
             </div>
           </div>

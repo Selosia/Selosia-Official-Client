@@ -1,4 +1,4 @@
-import { Link, createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Main from "../layouts/Main";
 import Home from "../pages/Home";
 import About from "../pages/About";
@@ -34,6 +34,9 @@ import UserDashboard from "../layouts/UserDashboard";
 import PrivateRoute from "./PrivateRoute";
 import BuyerRoute from "./BuyerRoute";
 import AdminRoute from "./AdminRoute";
+import Error from "../pages/Error";
+import TermsAndConditions from "../pages/TermsAndConditions";
+import Privacy from "../pages/Privacy";
 
 const router = createBrowserRouter([
   /* ---------------------------- Main routes--------------------------- */
@@ -55,11 +58,19 @@ const router = createBrowserRouter([
         element: <Blog />,
       },
       {
+        path: "/terms&Condition",
+        element: <TermsAndConditions />,
+      },
+      {
+        path: "/privacy",
+        element: <Privacy />,
+      },
+      {
         path: "/dynamic-blog/:id",
         element: <BlogDetails />,
         loader: ({ params }) =>
           fetch(
-            `https://web-tech-official-server.vercel.app/blog/dynamic/${params.id}`
+            `https://selosia-official-server.vercel.app/api/v1/blog/${params.id}`
           ),
       },
     ],
@@ -86,15 +97,27 @@ const router = createBrowserRouter([
 
   {
     path: "/user/dashboard",
-    element: <PrivateRoute><UserDashboard /></PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        <UserDashboard />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/user/dashboard",
-        element: <PrivateRoute><Profile /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/user/dashboard/order-now",
-        element: <PrivateRoute><OrderNow /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <OrderNow />
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -103,35 +126,43 @@ const router = createBrowserRouter([
 
   {
     path: "/actual-buyer/dashboard",
-    element: <PrivateRoute>
-      <BuyerRoute>
-        <ActualBuyerDashboard />
-      </BuyerRoute>
-    </PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        <BuyerRoute>
+          <ActualBuyerDashboard />
+        </BuyerRoute>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/actual-buyer/dashboard",
-        element: <PrivateRoute>
-          <BuyerRoute>
-            <Profile />
-          </BuyerRoute>
-        </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <BuyerRoute>
+              <Profile />
+            </BuyerRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/actual-buyer/dashboard/my-orders",
-        element: <PrivateRoute>
-          <BuyerRoute>
-            <MyOrders />
-          </BuyerRoute>
-        </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <BuyerRoute>
+              <MyOrders />
+            </BuyerRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/actual-buyer/dashboard/order-now",
-        element: <PrivateRoute>
-          <BuyerRoute>
-            <OrderNow />
-          </BuyerRoute>
-        </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <BuyerRoute>
+              <OrderNow />
+            </BuyerRoute>
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -140,59 +171,73 @@ const router = createBrowserRouter([
 
   {
     path: "/admin-profile/dashboard",
-    element: <PrivateRoute>
-      <AdminRoute>
-        <AdminDashboard />
-      </AdminRoute>
-    </PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        <AdminRoute>
+          <AdminDashboard />
+        </AdminRoute>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/admin-profile/dashboard",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <Profile />
-        </AdminRoute>
-      </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <Profile />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/admin-profile/dashboard/control-panel",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <ControlPanel />
-        </AdminRoute>
-      </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <ControlPanel />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/admin-profile/dashboard/new-order-request",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <OrderRequest />
-        </AdminRoute>
-      </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <OrderRequest />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/admin-profile/dashboard/daily-scrum",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <DailyScrum />
-        </AdminRoute>
-      </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <DailyScrum />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/admin-profile/dashboard/new-task-list",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <AllApproveOrders />
-        </AdminRoute>
-      </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AllApproveOrders />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/admin-profile/dashboard/dynamic-new-task-list/:id",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <DynamicNewTaskList />
-        </AdminRoute>
-      </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <DynamicNewTaskList />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://web-tech-official-server.vercel.app/dynamic-new-task/${params.id}`
@@ -200,83 +245,111 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin-profile/dashboard/working-all-projects-list",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <WorkingProjectsList />
-        </AdminRoute>
-      </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <WorkingProjectsList />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/admin-profile/dashboard/our-all-buyer-list",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <OurBuyer />
-        </AdminRoute>
-      </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <OurBuyer />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
-        path: "/admin-profile/dashboard/dynamic-provable-buyer-profile",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <DynamicProvableBuyerProfile />
-        </AdminRoute>
-      </PrivateRoute>,
+        path: "/admin-profile/dashboard/dynamic-provable-buyer-profile/:email",
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <DynamicProvableBuyerProfile />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://codexriddle-official-server.vercel.app/api/v1/user/provableBuyer/${params.email}`
+          ),
       },
       {
-        path: "/admin-profile/dashboard/dynamic-actual-buyer-profile",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <DynamicActualBuyerProfile />
-        </AdminRoute>
-      </PrivateRoute>,
+        path: "/admin-profile/dashboard/dynamic-actual-buyer-profile/:email",
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <DynamicActualBuyerProfile />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://selosia-official-server.vercel.app/api/v1/user?email=${params.email}`
+          ),
       },
       {
         path: "/admin-profile/dashboard/add-service",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <AddService />
-        </AdminRoute>
-      </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AddService />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/admin-profile/dashboard/add-blog",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <AddBlog />
-        </AdminRoute>
-      </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AddBlog />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/admin-profile/dashboard/add/showcase-project",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <AddShowCaseProject />
-        </AdminRoute>
-      </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AddShowCaseProject />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/admin-profile/dashboard/all-completed-project",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <AllCompletedTask />
-        </AdminRoute>
-      </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <AllCompletedTask />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/admin-profile/dashboard/submit-completed-task",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <SubmitCompletedProject />
-        </AdminRoute>
-      </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <SubmitCompletedProject />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/admin-profile/dashboard/dynamic-submitted-task/:id",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <DynamicSingleCompletedTask />
-        </AdminRoute>
-      </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <DynamicSingleCompletedTask />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://web-tech-official-server.vercel.app/dynamic-submitted-task/${params.id}`
@@ -284,27 +357,33 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin-profile/dashboard/trash-bin",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <Trash />
-        </AdminRoute>
-      </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <Trash />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/admin-profile/dashboard/trash-bin/all-rejected-projects",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <OrderRequestCancel />
-        </AdminRoute>
-      </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <OrderRequestCancel />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/admin-profile/dashboard/order-request/trash-bin",
-        element: <PrivateRoute>
-        <AdminRoute>
-          <DeletedOrderRequests />
-        </AdminRoute>
-      </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <DeletedOrderRequests />
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -313,14 +392,7 @@ const router = createBrowserRouter([
 
   {
     path: "*",
-    element: (
-      <div>
-        <h1>No routes found yet!</h1>
-        <Link to="/" className="btn btn-success">
-          Go Home
-        </Link>
-      </div>
-    ),
+    element: <Error />,
   },
 ]);
 export default router;

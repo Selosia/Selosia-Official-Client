@@ -104,7 +104,6 @@ const RegisterFormField = () => {
 
                 postAUserInSignUp(userData)
                 .then((response) => {
-
                     if(response?.status === 'success' && response.insertedId) {
                         navigate(from, { replace: true });
                         toast.success("successfully Email Login", {

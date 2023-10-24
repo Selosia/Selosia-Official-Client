@@ -28,13 +28,16 @@ const AdminsMailSenderModal = () => {
     const message = form.message.value;
 
     axios
-      .post(`https://codexriddle-official-server.vercel.app/api/v1/sendMail/mailToDev`, {
-        sender: user.email,
-        receiver,
-        receiverName,
-        subject,
-        message,
-      })
+      .post(
+        `https://codexriddle-official-server.vercel.app/api/v1/sendMail/mailToDev`,
+        {
+          sender: user.email,
+          receiver,
+          receiverName,
+          subject,
+          message,
+        }
+      )
       .then((res) => {
         console.log(res);
       })
@@ -63,77 +66,55 @@ const AdminsMailSenderModal = () => {
 
           <div>
             <div className="m-5">
-              <h1>Admin list...</h1>
+              <h1 className="title">Admin list...</h1>
 
               <ol>
                 {adminsEmail?.map((adminEmail, idx) => (
                   <li key={idx} className="flex gap-2 font-semibold">
-                    <span>{idx + 1}</span>
-                    <span>{adminEmail?.email}</span>
+                    <span>{idx + 1}.</span>
+                    <span className="title">{adminEmail?.email}</span>
                   </li>
                 ))}
               </ol>
 
               <form onSubmit={handleSubmit} className="space-y-3 mt-5">
-                <div className="border border-gray-500 rounded-xl flex items-center">
-                  <span className="ml-2">To:</span>
+                <div className="border border-gray-500 rounded-md flex items-center">
                   <input
                     type="email"
                     name="email"
-                    placeholder="user email..."
-                    className="w-full px-3 py-2 rounded-xl bg-white focus outline-none  "
-                    required
-                  />
-                </div>
-                <div className="border border-gray-500 rounded-xl flex items-center">
-                  <span className="ml-2">Name:</span>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="name..."
-                    className="w-full px-3 py-2 rounded-xl bg-white focus outline-none  "
-                    required
-                  />
-                </div>
-                <div className="border border-gray-500 rounded-xl flex items-center">
-                  <span className="ml-2">Subject:</span>
-                  <input
-                    type="text"
-                    name="subject"
-                    placeholder="mail subject..."
+                    placeholder="Admin Email"
                     className="w-full px-3 py-2 rounded-xl bg-white focus outline-none  "
                     required
                   />
                 </div>
 
-                <div className="border border-gray-500 rounded-xl flex items-center">
-                  <span className="ml-2 -mt-20">Body:</span>
+                <div className="border border-gray-500 rounded-md flex items-center">
+                  <input
+                    type="text"
+                    name="subject"
+                    placeholder="Mail Purpose"
+                    className="w-full px-3 py-2 rounded-xl bg-white focus outline-none  "
+                    required
+                  />
+                </div>
+
+                <div className="border border-gray-500 rounded-md flex items-center">
                   <textarea
                     name="message"
-                    placeholder="message..."
+                    placeholder="Purpose Details"
                     cols="30"
-                    className="w-full px-3 py-2 rounded-xl bg-white focus outline-none"
+                    className="w-full px-3 py-2 rounded-md bg-white focus outline-none"
                     rows="5"
                   ></textarea>
                 </div>
 
                 <button
-                  className="bg-[#27E8B3] w-full h-10 rounded-lg"
+                  className=" transition-all duration-500 hover:border-[#27E8B3]  title btn btn-outline hover:bg-[#27E8B3] w-full h-10 rounded-lg"
                   type="submit"
                 >
-                  Send
+                  Send Mail
                 </button>
               </form>
-            </div>
-
-            <div className="flex justify-end items-center gap-x-2 py-3 px-4 border-t dark:border-gray-700">
-              <button
-                type="button"
-                className="hs-dropup-toggle py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                data-hs-overlay="#Admin-Mail-Sender-Modal"
-              >
-                Close
-              </button>
             </div>
           </div>
         </div>
