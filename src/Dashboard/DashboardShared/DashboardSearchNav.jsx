@@ -14,7 +14,7 @@ import { AuthContext } from "../../context/AuthProvider";
 import { MdDashboardCustomize } from "react-icons/md";
 import signOut from "../../assets/image/signOut.png";
 // import AdditionalSidebar from "../AdminDashboard/AdditionalSidebar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 // import MobileAdminDrawerSide from "../../Utilities/DashboardSearchNav/MobileAdminDrawerSide";
 // import useUserType from "../../hooks/useUserType";
@@ -22,7 +22,8 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 // import MobileBuyerDrawerSide from "../../Utilities/DashboardSearchNav/MobileBuyerDrawerSide";
 
 const DashboardSearchNav = () => {
-  const { user, theme, setTheme } = useContext(AuthContext);
+  const { user, theme, logOut, setTheme } = useContext(AuthContext);
+  const navigate = useNavigate();
   // console.log(user);
 
   // get user type .. form custom hook .. userUserType()
@@ -71,6 +72,11 @@ const DashboardSearchNav = () => {
     }
   }, [theme]);
   //* END
+
+  const handleLogOut = () => {
+    logOut();
+    navigate("/authentication/login");
+  };
 
   return (
     <div className="border lg:mx-5 h-20 rounded-md bg-white dark:bg-black dark:text-white">
@@ -265,7 +271,7 @@ const DashboardSearchNav = () => {
               </a>
             </li>
 
-            <li>
+            <li onClick={handleLogOut}>
               <div className="flex py-2">
                 <img className="w-6 h-6" src={signOut} alt="" />
                 <a className="font-bold text-red-500">Logout</a>
