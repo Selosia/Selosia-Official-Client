@@ -100,7 +100,7 @@ const DashboardSearchNav = () => {
 
           {/* Additional Sidebar  */}
           {/* Nested menu with drawer */}
-          <div className="drawer-side">
+          <div className="drawer-side lg:z-0 z-20">
             <label
               htmlFor="additional-drawer"
               className="drawer-overlay"
