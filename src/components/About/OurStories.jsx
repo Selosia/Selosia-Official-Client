@@ -7,7 +7,7 @@ const OurStories = () => {
         <div className="lg:hidden">
           <img src={ourStories} className="w-" alt="" />
         </div>
-        <div className="lg:mt-12">
+        <div className="lg:mt-16">
           <h1 className="text-2xl mb-4 title text-start text-gray-800 capitalize lg:text-3xl dark:text-white">
             Our stories
           </h1>

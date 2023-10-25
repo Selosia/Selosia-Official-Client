@@ -18,7 +18,7 @@ const ExperienceTrust = () => {
         </div>
 
         {/* Bottom Part */}
-        <div className="grid grid-cols-1 mt-5 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-xl mx-auto">
+        <div className="grid grid-cols-1 mt-12 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-xl mx-auto">
           {/* Feedback Card */}
           <div className="p-4 bg-white hover:text-white rounded-lg shadow-md hover:shadow-lg transition-all duration-500 ease-in-out transform hover:-translate-y-2 hover:bg-[#26BFC7] ">
             <div className="flex gap-2">
