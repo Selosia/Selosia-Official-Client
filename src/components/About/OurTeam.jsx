@@ -21,7 +21,7 @@ const OurTeam = () => {
 
             <p className="max-w-2xl mx-auto  text-center  dark:text-gray-300">
               Exceptional Individuals, United by Passion, Forming an
-              Extraordinary Team, Defining Selosia's Success
+              Extraordinary Team, Defining Selosia{"'"}s Success
             </p>
           </div>
 
