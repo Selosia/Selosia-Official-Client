@@ -46,10 +46,13 @@ const SubmitCompletedProject = () => {
   };
   return (
     <section>
-      <div className="p-8">
-        <h1 className="text-2xl font-semibold text-center">
+      <div className="p-8 text-center">
+        <h1 className="text-3xl title font-semibold text-center">
           Submit Completed Projects
         </h1>
+        <p className="font-semibold mt-1">
+          We Want to See Your Finished Projects
+        </p>
       </div>
 
       <div className="mx-auto max-w-[600px] px-4  pb-8 sm:px-6 lg:px-8">
