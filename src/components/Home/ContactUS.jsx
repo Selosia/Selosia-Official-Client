@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { FiMail, FiPhone } from "react-icons/fi";
 import contactAnimation from "../../assets/Animations/contactAnimation.json";
 import { AuthContext } from "../../context/AuthProvider";
+import Swal from "sweetalert2";
 
 const ContactUS = () => {
   const { user } = useContext(AuthContext);
@@ -28,11 +29,18 @@ const ContactUS = () => {
       .send(serviceID, templateID, templateParams, publicKey)
       .then(() => {
         // console.log('Email sent successfully!', response);
-        alert("Email sent successfully!");
+        Swal.fire("WOW 😲", "Message Successfully sent", "success");
+
         e.target.reset();
       })
       .catch((error) => {
-        console.error("Email sending error:", error);
+        if (error) {
+          Swal.fire({
+            icon: "error",
+            title: "OOOPS 👎",
+            text: "Something went wrong!",
+          });
+        }
       });
   };
 
@@ -98,7 +106,7 @@ const ContactUS = () => {
             <div className="-mb-32">
               <button
                 type="submit"
-                className="inline-block rounded-lg bg-[#26BEC7] lg:px-12 lg:py-3 px-8 py-4 text-white text-base font-semibold"
+                className="inline-block rounded-md title bg-[#26BEC7] lg:px-12 lg:py-3 px-8 py-4 text-white text-base font-semibold"
               >
                 Send your message
               </button>
