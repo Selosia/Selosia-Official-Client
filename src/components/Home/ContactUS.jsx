@@ -1,6 +1,6 @@
 import emailjs from "@emailjs/browser";
 import Lottie from "lottie-react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FiMail, FiPhone } from "react-icons/fi";
 import contactAnimation from "../../assets/Animations/contactAnimation.json";
 import { AuthContext } from "../../context/AuthProvider";
@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 
 const ContactUS = () => {
   const { user } = useContext(AuthContext);
+  const [isLoading, setLoading] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +25,7 @@ const ContactUS = () => {
     };
 
     console.log(templateParams);
-
+    setLoading(true);
     emailjs
       .send(serviceID, templateID, templateParams, publicKey)
       .then(() => {
@@ -41,6 +42,9 @@ const ContactUS = () => {
             text: "Something went wrong!",
           });
         }
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -106,9 +110,16 @@ const ContactUS = () => {
             <div className="-mb-32">
               <button
                 type="submit"
-                className="inline-block rounded-md title bg-[#26BEC7] lg:px-12 lg:py-3 px-8 py-4 text-white text-base font-semibold"
+                className="inline-block  rounded-md title bg-[#26BEC7] lg:px-12 lg:py-3 px-8 py-4 text-white text-base font-semibold"
               >
-                Send your message
+                {isLoading ? (
+                  <div className="flex gap-2">
+                    <h1>Sending</h1>
+                    <span className="loading loading-dots loading-md"></span>
+                  </div>
+                ) : (
+                  <div>Send your message</div>
+                )}
               </button>
             </div>
           </form>
