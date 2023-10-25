@@ -70,7 +70,7 @@ const router = createBrowserRouter([
         element: <BlogDetails />,
         loader: ({ params }) =>
           fetch(
-            `https://selosia-official-server.vercel.app/blog/dynamic/${params.id}`
+            `https://selosia-official-server.vercel.app/api/v1/blog/${params.id}`
           ),
       },
     ],
@@ -274,7 +274,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://codexriddle-official-server.vercel.app/api/v1/user/provableBuyer/${params.email}`
+            `https://selosia-official-server.vercel.app/api/v1/user/provableBuyer?email=${params.email}`
           ),
       },
       {

@@ -1,23 +1,21 @@
 import { useContext } from "react";
-import { Scrollbars } from 'react-custom-scrollbars-2';
-import { BsBookmarkStarFill, BsBoxArrowInUpLeft, BsEscape, BsFillDoorOpenFill, BsMicrosoftTeams, BsSoundwave, BsStackOverflow,
+import { Scrollbars } from "react-custom-scrollbars-2";
+import { FaUserAlt } from "react-icons/fa";
+import {
+  BsBoxArrowInUpLeft,
+  BsEscape,
+  BsFillDoorOpenFill,
+  BsMicrosoftTeams,
+  BsSoundwave,
+  BsStackOverflow,
 } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { AuthContext } from "../../context/AuthProvider";
 // Initialization for ES Users
-import {
-    Dropdown,
-    Ripple,
-    initTE,
-  } from "tw-elements";
+import { Dropdown, Ripple, initTE } from "tw-elements";
 import { SiBloglovin } from "react-icons/si";
-  
-  initTE({ Dropdown, Ripple });
 
-
-
-
+initTE({ Dropdown, Ripple });
 
 const AdminSidebar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -27,17 +25,7 @@ const AdminSidebar = () => {
 
   const handleLogOut = () => {
     logOut();
-    navigate("/");
-    toast.error("logged out successfully done", {
-      position: "bottom-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
+    navigate("/authentication/login");
   };
   return (
     <Scrollbars>
@@ -56,103 +44,95 @@ const AdminSidebar = () => {
           {/* <div className="underlineAnimation"></div> */}
         </div>
 
-
-
-
         {/* Sidebar Link */}
-        <ul>
+        <ul className="title">
           <li>
             <Link
               to="/admin-profile/dashboard"
-              className="flex mx-10 my-5 group text-gray-500 hover:text-cyan-500  text-semibold"
+              className="flex mx-10 my-5 group  hover:text-cyan-500  text-semibold"
             >
               <span
                 className="mx-3 dark:text-black 
                     shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)] 
                     rounded-lg bg-white p-2 group-hover:scale-125 duration-700"
               >
-                <BsBookmarkStarFill className=" group-hover:scale-125 duration-700" />
+                <FaUserAlt className=" group-hover:scale-125 duration-700" />
               </span>
               <span className="mt-2">Profile</span>
             </Link>
           </li>
 
-
-
           <li>
             <Link
               to="/admin-profile/dashboard/our-all-buyer-list"
-              className="flex mx-10 my-5 group text-gray-500 hover:text-cyan-500  text-semibold"
+              className="flex mx-10 my-5 group  hover:text-cyan-500  text-semibold"
             >
               <span className="mx-3 dark:text-black shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)] rounded-lg bg-white p-2 group-hover:scale-125 duration-700">
                 <BsMicrosoftTeams className="group-hover:scale-125 duration-700" />
               </span>
-              <span className="mt-2 group-hover:translate-x-2 duration-700">Our Buyers</span>
+              <span className="mt-2  duration-700">Our Buyers</span>
             </Link>
           </li>
 
           <li>
             <Link
-                    to="/admin-profile/dashboard/all-completed-project"
-                    className="flex mx-10 my-5 group text-gray-500 hover:text-cyan-500  text-semibold"
+              to="/admin-profile/dashboard/all-completed-project"
+              className="flex mx-10 my-5 group  hover:text-cyan-500  text-semibold"
             >
               <span className="mx-3 dark:text-black shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)] rounded-lg bg-white p-2 group-hover:scale-125 duration-700">
                 <BsStackOverflow className="group-hover:scale-125 duration-700" />
               </span>
-              <span className="mt-2 ml-1 group-hover:translate-x-2 duration-700">All completed project</span>
+              <span className="mt-2 ml-1  duration-700">
+                All completed project
+              </span>
             </Link>
           </li>
 
           <li>
             <Link
-                    to="/admin-profile/dashboard/add-service"
-                    className="flex mx-10 my-5 group text-gray-500 hover:text-cyan-500  text-semibold"
+              to="/admin-profile/dashboard/add-service"
+              className="flex mx-10 my-5 group  hover:text-cyan-500  text-semibold"
             >
               <span className="mx-3 dark:text-black shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)] rounded-lg bg-white p-2 group-hover:scale-125 duration-700">
                 <BsEscape className="group-hover:scale-125 duration-700" />
               </span>
-              <span className="mt-2 group-hover:translate-x-2 duration-700">Add Service</span>
+              <span className="mt-2  duration-700">Add Service</span>
             </Link>
           </li>
 
           <li>
             <Link
-                    to="/admin-profile/dashboard/add/showcase-project"
-                    className="flex ml-10 my-5 group text-gray-500 hover:text-cyan-500  text-semibold"
+              to="/admin-profile/dashboard/add/showcase-project"
+              className="flex ml-10 my-5 group  hover:text-cyan-500  text-semibold"
             >
               <span className="mx-3 dark:text-black shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)] rounded-lg bg-white p-2 group-hover:scale-125 duration-700">
                 <BsBoxArrowInUpLeft className="group-hover:scale-125 duration-700" />
               </span>
-              <span className="mt-2 group-hover:translate-x-2 duration-700">Add Showcase Project</span>
+              <span className="mt-2  duration-700">Add Showcase Project</span>
             </Link>
-          </li>  
+          </li>
 
           <li>
             <Link
-                    to="/admin-profile/dashboard/add-blog"
-                    className="flex mx-10 my-5 group text-gray-500 hover:text-cyan-500  text-semibold"
+              to="/admin-profile/dashboard/add-blog"
+              className="flex mx-10 my-5 group  hover:text-cyan-500  text-semibold"
             >
               <span className="mx-3 dark:text-black shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)] rounded-lg bg-white p-2 group-hover:scale-125 duration-700">
                 <SiBloglovin className="group-hover:scale-125 duration-700" />
               </span>
-              <span className="mt-2 group-hover:translate-x-2 duration-700">Add Blog</span>
+              <span className="mt-2  duration-700">Add Blog</span>
             </Link>
           </li>
-
 
           <li onClick={handleLogOut}>
             <p className="flex mx-10 my-5 group hover:text-red-500 cursor-pointer text-semibold">
               <span className="mx-3 dark:text-black shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)] rounded-lg bg-white p-2 group-hover:scale-125 duration-700">
                 <BsFillDoorOpenFill className="group-hover:scale-125 duration-700" />
               </span>
-              <span className="mt-2 group-hover:translate-x-2 duration-700">Log Out</span>
+              <span className="mt-2  duration-700">Log Out</span>
             </p>
           </li>
         </ul>
-
-
-
-
 
         {/* Bottom User Info */}
         {/* <div className="flex justify-center mx-5 px-5 mt-28 mb-5 py-5 bg-emerald-50 rounded-xl">
