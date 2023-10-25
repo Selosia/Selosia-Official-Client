@@ -55,9 +55,7 @@ const DashboardSearchNav = () => {
   // console.log(time);
 
   //* set toggle button local storage for fixed with toggle
-  const [isDarkMode, setIsDarkMode] = useState(
-    localStorage.getItem("darkMode") === "true"
-  );
+  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("darkMode") === "true");
 
   const toggleMode = () => {
     const newMode = !isDarkMode;
@@ -103,9 +101,18 @@ const DashboardSearchNav = () => {
   }, [user]);
 
   // logout user
+  // const handleLogOut = () => {
+  //   logOut();
+  //   navigate("/authentication/login");
+  // };
+
+  // const navigate = useNavigate();
+
   const handleLogOut = () => {
     logOut();
-    navigate("/authentication/login");
+    navigate("/authentication/login")
+      .then(() => {})
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -338,11 +345,7 @@ const DashboardSearchNav = () => {
           userType === 'Admin' && */}
         <div className="navbar-end p-2 md:hidden">
           <div className="drawer">
-            <input
-              id="admin-drawer"
-              type="checkbox"
-              className="drawer-toggle"
-            />
+            <input id="admin-drawer" type="checkbox" className="drawer-toggle" />
 
             {/* <MobileAdminDrawerSide /> */}
           </div>
@@ -354,11 +357,7 @@ const DashboardSearchNav = () => {
           userType === 'Buyer' && */}
         <div className="navbar-end p-2 md:hidden">
           <div className="drawer">
-            <input
-              id="buyer-drawer"
-              type="checkbox"
-              className="drawer-toggle"
-            />
+            <input id="buyer-drawer" type="checkbox" className="drawer-toggle" />
 
             {/* <MobileBuyerDrawerSide /> */}
           </div>
@@ -385,14 +384,9 @@ const DashboardSearchNav = () => {
           </label>
 
           {/* Dropdown by clicking user image */}
-          <ul
-            tabIndex={0}
-            className="mt-3 z-[1] p-2   shadow menu menu-sm dropdown-content  rounded-box w-60"
-          >
+          <ul tabIndex={0} className="mt-3 z-[1] p-2   shadow menu menu-sm dropdown-content  rounded-box w-60">
             <li>
-              <a className="flex justify-start font-bold  h-10 ">
-                {user?.displayName}
-              </a>
+              <a className="flex justify-start font-bold  h-10 ">{user?.displayName}</a>
             </li>
 
             <li onClick={handleLogOut}>
