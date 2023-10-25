@@ -7,7 +7,7 @@ const MissionVission = () => {
         <div>
           <img src={missionVision} alt="" />
         </div>
-        <div className="lg:mt-12">
+        <div className="lg:mt-5">
           <h1 className="text-2xl mb-4 title text-start text-gray-800 capitalize lg:text-3xl dark:text-white">
             Our Mission & Vision
           </h1>
