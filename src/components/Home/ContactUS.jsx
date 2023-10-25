@@ -30,7 +30,7 @@ const ContactUS = () => {
       .send(serviceID, templateID, templateParams, publicKey)
       .then(() => {
         // console.log('Email sent successfully!', response);
-        Swal.fire("WOW 😲", "Message Successfully sent", "success");
+        Swal.fire("WOW 😲", "Message sent Successfully", "success");
 
         e.target.reset();
       })
