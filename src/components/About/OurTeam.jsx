@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BsFacebook, BsGithub, BsLinkedin } from "react-icons/bs";
+import { BsFacebook, BsLinkedin } from "react-icons/bs";
 const OurTeam = () => {
   const [members, setMember] = useState([]);
   useEffect(() => {
@@ -18,7 +18,7 @@ const OurTeam = () => {
             <div className="w-24 h-[2px] bg-[#26BEC7] mx-auto my-5"></div>
 
             <p className="max-w-2xl mx-auto  text-center  dark:text-gray-300">
-              Exceptional Individuals, United by Passion, Forming an Extraordinary Team, Defining Selosia's Success
+              Exceptional Individuals, United by Passion, Forming an Extraordinary Team, Defining Selosia{"'"}s Success
             </p>
           </div>
 
