@@ -1,34 +1,36 @@
 import { useEffect, useState } from "react";
 import OrderRequestHeader from "../../../utils/DashBoardUtilities/AdminUtilities/OrderRequest/OrderRequestHeader";
 import OrderRequestTable from "../../../utils/DashBoardUtilities/AdminUtilities/OrderRequestTable";
-// import { getAllPendingOrders } from "../../../apis/orderOperation";
-import ReactPaginate from "react-paginate";
+import { useQuery } from "@tanstack/react-query";
+
 const OrderRequest = () => {
-  const [newOrderRequest, setNewOrderRequest] = useState([]);
 
-  useEffect(() => {
-    fetch(
-      `https://selosia-official-server.vercel.app/api/v1/project/all-pendingOrders`
-    )
-      .then((res) => res.json())
-      .then((data) => setNewOrderRequest(data?.data));
-  }, []);
 
-  const fetchSubmittedProject = async (currentPage) => {
-    const res = await fetch(
-      `https://codexriddle-official-server.vercel.app/api/v1/project/all-pendingOrders?_page=${currentPage}&_limit=${limit}`
-    );
-    const data = await res.json();
-    return data;
-  };
+  // const [newOrderRequest, setNewOrderRequest] = useState([]);
 
-  // console.log(newOrderRequest);
+
+
+const {data,refetch,isError} = useQuery(
+  {
+    queryKey:['all-pendingOrders'],
+    queryFn: async ()=> {
+      const res = await fetch('https://selosia-official-server.vercel.app/api/v1/project/all-pendingOrders');
+      const data = await res.json()
+      return data;
+    }
+  }
+)
+
+
+
+const newOrderRequest = data?.data;
+
 
   return (
     <div className="">
       {/* <h1>When a user or buyer send a order. The order will come in this page</h1> */}
       <OrderRequestHeader newOrderRequest={newOrderRequest} />
-      <OrderRequestTable newOrderRequest={newOrderRequest} />
+      <OrderRequestTable allperams={{newOrderRequest,refetch}} />
     </div>
   );
 };
