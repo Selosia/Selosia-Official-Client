@@ -107,7 +107,7 @@ const AddBlog = () => {
 
         {/* File input */}
 
-        <h3 className="block mb-2 font-semibold mt-2"> Upload Image</h3>
+        <h3 className="block mb-2 font-semibold mt-2">Upload Image</h3>
         <div className="flex items-center justify-center w-full  mb-4">
           <label className="flex flex-col items-center justify-center w-full h-16 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
             <div className="flex flex-col items-center justify-center pt-5 pb-6">
