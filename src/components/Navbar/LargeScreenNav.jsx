@@ -9,8 +9,7 @@ import useUserType from "../../hooks/useUserType";
 
 const LargeScreenNav = ({ logUser }) => {
   const { user, logOut } = useContext(AuthContext);
-  const [userType,loading] = useUserType(user?.email) 
-  
+  const [userType, loading] = useUserType(user?.email);
 
   const navigate = useNavigate();
 
@@ -33,90 +32,61 @@ const LargeScreenNav = ({ logUser }) => {
     <div className="m-auto fixed right-0 left-0  top-10 z-30 navbar hidden lg:flex backdrop-blur-xl bg-transparent">
       <div className=" w-full  flex justify-evenly">
         <div className="">
-          <img className="h-16" src='https://i.ibb.co/nkH6hMK/logo2-removebg-preview.png' alt="brandLOGO" />
+          <img className="h-16" src="https://i.ibb.co/nkH6hMK/logo2-removebg-preview.png" alt="brandLOGO" />
         </div>
 
         <nav className="space-x-12 font-bold">
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav"
-            }
-            to="/"
-          >
+          <NavLink className={({ isActive }) => (isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav")} to="/">
             Home
           </NavLink>
 
           <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav"
-            }
+            className={({ isActive }) => (isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav")}
             to="/about"
           >
             About
           </NavLink>
 
           <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav"
-            }
+            className={({ isActive }) => (isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav")}
             to="/blog"
           >
             Blogs
           </NavLink>
 
-            {
-                userType === 'Admin'
-                  &&   
-                  <NavLink
-                className={({ isActive }) =>
-                  isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav"
-                }
-                to="/admin-profile/dashboard"
-              >
-                 Dashboard
-              </NavLink>
-            }
-            {
-              userType === 'Buyer'
-              &&  
-              <NavLink
-              className={({ isActive }) =>
-                isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav"
-              }
+          {userType === "Admin" && (
+            <NavLink
+              className={({ isActive }) => (isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav")}
+              to="/admin-profile/dashboard"
+            >
+              Dashboard
+            </NavLink>
+          )}
+          {userType === "Buyer" && (
+            <NavLink
+              className={({ isActive }) => (isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav")}
               to="/actual-buyer/dashboard"
             >
-               Dashboard
+              Dashboard
             </NavLink>
-
-            }
-            {
-              userType === 'User'
-              && 
-
-              <NavLink
-              className={({ isActive }) =>
-                isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav"
-              }
+          )}
+          {userType === "User" && (
+            <NavLink
+              className={({ isActive }) => (isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav")}
               to="/user/dashboard"
             >
-               Dashboard
+              Dashboard
             </NavLink>
-            }
+          )}
 
-            {
-              !user?.uid && 
-              
-                <NavLink
-                className={({ isActive }) =>
-                  isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav"
-                }
-                to="/authentication/logIn"
-              >
-                Login
-              </NavLink>
-            }
-           
-        
+          {!user?.uid && (
+            <NavLink
+              className={({ isActive }) => (isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav")}
+              to="/authentication/logIn"
+            >
+              Login
+            </NavLink>
+          )}
         </nav>
 
         <div className="">
@@ -143,9 +113,7 @@ const LargeScreenNav = ({ logUser }) => {
                 <li>
                   <a className="flex justify-center font-bold items-center h-10 ">
                     {user?.displayName}
-                    <span className="badge text-white bg-[#26BFC7]">
-                      {logUser?.role}
-                    </span>
+                    <span className="badge text-white bg-[#26BFC7]">{logUser?.role}</span>
                   </a>
                 </li>
                 <li onClick={handleLogOut}>

@@ -14,7 +14,7 @@ import { AuthContext } from "../../context/AuthProvider";
 import { MdDashboardCustomize } from "react-icons/md";
 import signOut from "../../assets/image/signOut.png";
 // import AdditionalSidebar from "../AdminDashboard/AdditionalSidebar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 // import MobileAdminDrawerSide from "../../Utilities/DashboardSearchNav/MobileAdminDrawerSide";
 // import useUserType from "../../hooks/useUserType";
@@ -22,7 +22,7 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 // import MobileBuyerDrawerSide from "../../Utilities/DashboardSearchNav/MobileBuyerDrawerSide";
 
 const DashboardSearchNav = () => {
-  const { user, theme, setTheme } = useContext(AuthContext);
+  const { user, logOut, theme, setTheme } = useContext(AuthContext);
   // console.log(user);
 
   // get user type .. form custom hook .. userUserType()
@@ -34,9 +34,7 @@ const DashboardSearchNav = () => {
   const time = String(new Date().toLocaleString());
 
   //* set toggle button local storage for fixed with toggle
-  const [isDarkMode, setIsDarkMode] = useState(
-    localStorage.getItem("darkMode") === "true"
-  );
+  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("darkMode") === "true");
 
   const toggleMode = () => {
     const newMode = !isDarkMode;
@@ -72,16 +70,21 @@ const DashboardSearchNav = () => {
   }, [theme]);
   //* END
 
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    logOut();
+    navigate("/authentication/login")
+      .then(() => {})
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="border lg:mx-5 h-20 rounded-md bg-white dark:bg-black dark:text-white">
       <div className="flex justify-around py-5">
         {/* (Dashboard) Accordion large screen drawer */}
         <div className="drawer w-36 ">
-          <input
-            id="additional-drawer"
-            type="checkbox"
-            className="drawer-toggle"
-          />
+          <input id="additional-drawer" type="checkbox" className="drawer-toggle" />
           <label
             htmlFor="additional-drawer"
             className="drawer-content flex group text-gray-500 dark:text-white dark:hover:text-cyan-500 hover:text-cyan-500 text-semibold cursor-pointer"
@@ -95,10 +98,7 @@ const DashboardSearchNav = () => {
           {/* Additional Sidebar  */}
           {/* Nested menu with drawer */}
           <div className="drawer-side">
-            <label
-              htmlFor="additional-drawer"
-              className="drawer-overlay"
-            ></label>
+            <label htmlFor="additional-drawer" className="drawer-overlay"></label>
 
             <ul className="space-y-1 menu min-h-full dark:bg-gray-800 bg-base-200 text-base-content">
               <label
@@ -208,11 +208,7 @@ const DashboardSearchNav = () => {
           userType === 'Admin' && */}
         <div className="navbar-end p-2 md:hidden">
           <div className="drawer">
-            <input
-              id="admin-drawer"
-              type="checkbox"
-              className="drawer-toggle"
-            />
+            <input id="admin-drawer" type="checkbox" className="drawer-toggle" />
 
             {/* <MobileAdminDrawerSide /> */}
           </div>
@@ -224,11 +220,7 @@ const DashboardSearchNav = () => {
           userType === 'Buyer' && */}
         <div className="navbar-end p-2 md:hidden">
           <div className="drawer">
-            <input
-              id="buyer-drawer"
-              type="checkbox"
-              className="drawer-toggle"
-            />
+            <input id="buyer-drawer" type="checkbox" className="drawer-toggle" />
 
             {/* <MobileBuyerDrawerSide /> */}
           </div>
@@ -255,17 +247,12 @@ const DashboardSearchNav = () => {
           </label>
 
           {/* Dropdown by clicking user image */}
-          <ul
-            tabIndex={0}
-            className="mt-3 z-[1] p-2   shadow menu menu-sm dropdown-content  rounded-box w-60"
-          >
+          <ul tabIndex={0} className="mt-3 z-[1] p-2   shadow menu menu-sm dropdown-content  rounded-box w-60">
             <li>
-              <a className="flex justify-start font-bold  h-10 ">
-                {user?.displayName}
-              </a>
+              <a className="flex justify-start font-bold  h-10 ">{user?.displayName}</a>
             </li>
 
-            <li>
+            <li onClick={handleLogOut}>
               <div className="flex py-2">
                 <img className="w-6 h-6" src={signOut} alt="" />
                 <a className="font-bold text-red-500">Logout</a>
