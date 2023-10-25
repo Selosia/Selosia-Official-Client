@@ -3,9 +3,7 @@ import { BsFacebook, BsGithub, BsLinkedin } from "react-icons/bs";
 const OurTeam = () => {
   const [members, setMember] = useState([]);
   useEffect(() => {
-    fetch(
-      `https://codexriddle-official-server.vercel.app/api/v1/teamMember/all-teamMembers`
-    )
+    fetch(`https://codexriddle-official-server.vercel.app/api/v1/teamMember/all-teamMembers`)
       .then((res) => res.json())
       .then((data) => setMember(data?.data));
   }, []);
@@ -20,8 +18,7 @@ const OurTeam = () => {
             <div className="w-24 h-[2px] bg-[#26BEC7] mx-auto my-5"></div>
 
             <p className="max-w-2xl mx-auto  text-center  dark:text-gray-300">
-              Exceptional Individuals, United by Passion, Forming an
-              Extraordinary Team, Defining Selosia{"'"}s Success
+              Exceptional Individuals, United by Passion, Forming an Extraordinary Team, Defining Selosia's Success
             </p>
           </div>
 
@@ -43,16 +40,11 @@ const OurTeam = () => {
                     {member?.name}
                   </h1>
 
-                  <p className="  capitalize dark:text-gray-300 ">
-                    {member?.title}
-                  </p>
+                  <p className="  capitalize dark:text-gray-300 ">{member?.title}</p>
 
                   <div className="flex gap-4 mt-3 -mx-2">
                     <a href={member?.facebook}>
                       <BsFacebook className="text-2xl hover:text-white" />
-                    </a>
-                    <a href={member?.facebook}>
-                      <BsGithub className="text-2xl" />
                     </a>
                     <a href={member?.linkedin}>
                       <BsLinkedin className="text-2xl" />

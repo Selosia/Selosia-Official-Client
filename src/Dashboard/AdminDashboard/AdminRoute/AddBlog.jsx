@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { toast } from "react-toastify";
 import { AuthContext } from "../../../context/AuthProvider";
 import { postNewBlog } from "../../../apis/blogOperation";
 import { handleImgBBUpload } from "../../../apis/imageUploadOperatio";
@@ -7,6 +6,8 @@ import { handleImgBBUpload } from "../../../apis/imageUploadOperatio";
 const AddBlog = () => {
   const { user } = useContext(AuthContext);
   const [imgURL, setImgURL] = useState();
+  const [imagePreview, setImagePreview] = useState(null);
+  const [isLoading, setLoading] = useState(false);
 
   const date = new Date();
   let dates = date.toLocaleDateString("en-US");
@@ -14,6 +15,18 @@ const AddBlog = () => {
   //! Image upload
   const handleImageUpload = async (event) => {
     const image = event.target.files[0];
+
+    // preview uploaded image
+    if (image) {
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        setImagePreview(event.target.result);
+      };
+
+      reader.readAsDataURL(image);
+    }
+    // preview uploaded image end
 
     handleImgBBUpload(image).then((response) => {
       // console.log(response);
@@ -37,26 +50,27 @@ const AddBlog = () => {
       date: dates,
       blogImage: imgURL,
     };
+    setLoading(true);
 
-    postNewBlog(blogData).then(() => {
-      // console.log(response);
-      toast.success("Successfully added blog !!", {
-        position: "bottom-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
+    postNewBlog(blogData)
+      .then(() => {
+        setImagePreview(null);
+        form.reset();
+      })
+      .finally(() => {
+        setLoading(false);
       });
-      form.reset();
-    });
   };
 
   return (
     <div className="px-12 py-12 items-center">
-      <form onSubmit={handleSubmit} className="md:w-2/4 mx-auto">
+      <div className="text-center">
+        <h1 className="title text-3xl ">Add Blog</h1>
+        <p className="mt-1 font-semibold">
+          Write, Share, Connect, Begin Your Blogging Adventure
+        </p>
+      </div>
+      <form onSubmit={handleSubmit} className="md:w-2/4 mt-10 mx-auto">
         {/* Title */}
 
         <div className="md:flex gap-8">
@@ -68,6 +82,7 @@ const AddBlog = () => {
               id="name"
               type="text"
               name="title"
+              required
               className="border border-[#1DE8B1] focus:outline-[#1DE8B1] rounded px-3 py-2 w-full text-black"
               placeholder="Enter title"
             />
@@ -83,6 +98,7 @@ const AddBlog = () => {
           <textarea
             id="description"
             name="description"
+            required
             className="border border-[#1DE8B1] focus:outline-[#1DE8B1] h-40 rounded px-3 py-2 w-full text-black"
             placeholder="Blog Description"
             style={{ whiteSpace: "pre-wrap" }}
@@ -115,19 +131,35 @@ const AddBlog = () => {
               onChange={handleImageUpload}
               id="dropzone-file"
               type="file"
+              required
               className="hidden"
             />
           </label>
         </div>
-
+        <div className="flex justify-center ">
+          {imagePreview && (
+            <img
+              src={imagePreview}
+              alt="Preview"
+              className="max-w-full max-h-32 my-2"
+            />
+          )}
+        </div>
         {/* Submit Button */}
 
         <div className="text-center">
           <button
             type="submit"
-            className="inline-flex items-center justify-center w-full bg-[#1DE8B1] py-3 rounded-2xl text-white font-semibold"
+            className="inline-flex title transition-all duration-500 btn hover:border-[#1DE8B1] btn-outline items-center justify-center w-full hover:bg-[#1DE8B1] py-3 rounded-md  font-semibold"
           >
-            Add Blog
+            {isLoading ? (
+              <div className="flex gap-2">
+                <h1 className="mt-1">Uploading</h1>
+                <span className="loading loading-dots loading-md"></span>
+              </div>
+            ) : (
+              <div>Add Blog</div>
+            )}
           </button>
         </div>
       </form>
