@@ -153,9 +153,9 @@ const AddBlog = () => {
             className="inline-flex title transition-all duration-500 btn hover:border-[#1DE8B1] btn-outline items-center justify-center w-full hover:bg-[#1DE8B1] py-3 rounded-md  font-semibold"
           >
             {isLoading ? (
-              <div>
-                <progress className="progress w-56"></progress>
-                <h1>Uploading, please wait</h1>
+              <div className="flex gap-2">
+                <h1 className="mt-1">Uploading</h1>
+                <span className="loading loading-dots loading-md"></span>
               </div>
             ) : (
               <div>Add Blog</div>
