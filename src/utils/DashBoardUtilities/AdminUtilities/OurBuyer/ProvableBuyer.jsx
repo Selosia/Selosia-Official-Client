@@ -1,17 +1,24 @@
 import { useEffect, useState } from "react";
 // import { getAllActualBuyers } from "../../../../apis/ourBuyerOperation";
 import { Link } from "react-router-dom";
+import Loader from "../../../../shared/Loader";
 
 const ProvableBuyer = () => {
   const [buyers, setBuyers] = useState([]);
   // console.log(buyers);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
+
     fetch(
       `https://selosia-official-server.vercel.app/api/v1/user/all-provableBuyer`
     )
       .then((res) => res.json())
-      .then((data) => setBuyers(data?.data));
+      .then((data) => setBuyers(data?.data))
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   return (
@@ -28,12 +35,11 @@ const ProvableBuyer = () => {
           <table className="table">
             {/* header */}
             <thead>
-              <tr className="">
-                <th>S/N</th>
+              <tr className=" title text-gray-900">
+                <th>Serial No</th>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Total Task</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -41,7 +47,15 @@ const ProvableBuyer = () => {
             {/* Table */}
             <tbody>
               {/* row 1 */}
-              {buyers && buyers.length > 0 ? (
+              {isLoading ? (
+                <tr className="">
+                  <td colSpan="6" className="text-center">
+                    <div className="flex items-center justify-center h-32">
+                      <Loader />
+                    </div>
+                  </td>
+                </tr>
+              ) : buyers && buyers.length > 0 ? (
                 buyers?.map((buyer, idx) => (
                   <tr key={buyer?._id}>
                     <td>{idx + 1}</td>
@@ -58,9 +72,7 @@ const ProvableBuyer = () => {
                     <td>
                       <p>{buyer?.email}</p>
                     </td>
-                    <td>
-                      <p>{idx + 1}</p>
-                    </td>
+
                     <td>
                       <Link
                         to={`/admin-profile/dashboard/dynamic-provable-buyer-profile/${buyer?.email}`}
