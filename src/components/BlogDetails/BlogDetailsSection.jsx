@@ -3,16 +3,32 @@ import BlogCommentPostModal from "../../modals/BlogCommentPostModal";
 import BlogComments from "../BlogDetails/BlogComments";
 import RestOfBlogs from "./RestOfBlogs";
 import { useState } from "react";
+import { FaComments } from "react-icons/fa";
+import { useEffect } from "react";
+import axios from "axios";
 
 const BlogDetailsSection = ({ blogInfo }) => {
-  console.log(blogInfo);
+  // console.log(blogInfo.data._id);
   const [modalData, setModalData] = useState();
   const handleCommentModal = (data) => {
     setModalData(data);
   };
+
+  const [commentData, setCommentData] = useState();
+  console.log(commentData);
+  useEffect(() => {
+    axios
+      .get(
+        `https://web-tech-official-server.vercel.app/blogsComments/${blogInfo?.data._id}`
+      )
+      .then((res) => {
+        // console.log(res.data.data);
+        setCommentData(res?.data?.data);
+      });
+  }, [blogInfo?.data?._id]);
   return (
-    <div>
-      <div className="bg-amber-50 max-w-screen-lg mx-auto p-3">
+    <div className="grid lg:grid-cols-12 grid-cols-1 mx-10 max-w-screen-2xl ">
+      <div className="bg-amber-50 lg:col-span-8  p-3">
         <div className="w-full h-96 overflow-hidden rounded">
           <img
             className="w-full"
@@ -35,14 +51,20 @@ const BlogDetailsSection = ({ blogInfo }) => {
 
         {/* blog comment section  */}
 
-        <div className=" text-center h-72 mt-20">
+        <div className=" text-center mb-20 mt-10">
           <BlogComments blogID={blogInfo?.data?._id} />
-
+          {commentData?.length === 0 && (
+            <div className=" text-center  text-md title text-red-500">
+              <FaComments className="w-1/2 mx-auto text-6xl" />
+              No Comments <br />
+              Be the first to comment
+            </div>
+          )}
           {/* modal open button */}
           <label
             onClick={() => handleCommentModal(blogInfo?.data)}
             htmlFor="CommentForABlogModal"
-            className=" text-center mt-2 flex justify-center font-bold text-[#26BFC7]"
+            className=" text-center flex  mx-auto mt-2  w-1/4 duration-500 transition-all justify-center font-bold text-[#26BFC7]"
           >
             leave comment
             <BiCommentDots className="mt-1 text-xl ml-2" />
@@ -52,7 +74,7 @@ const BlogDetailsSection = ({ blogInfo }) => {
       </div>
 
       {/* load other rest of the blog...... */}
-      <div>
+      <div className="lg:col-span-4">
         <RestOfBlogs excludeBlog={blogInfo?.data} />
       </div>
     </div>
