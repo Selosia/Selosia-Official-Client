@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../../shared/Loader";
-// import { getAllActualBuyers } from "../../../../apis/ourBuyerOperation";
-
 const OurActualBuyer = () => {
   const [buyers, setBuyers] = useState([]);
   const [isLoading, setLoading] = useState(false);
-  console.log(buyers);
+  // console.log(buyers);
+
   useEffect(() => {
     setLoading(true);
     fetch(
@@ -19,7 +18,6 @@ const OurActualBuyer = () => {
       });
   }, []);
 
-  // };
   return (
     <div className="p-10 max-h-[50vh] overflow-auto min-h-[20vh]">
       <div className="flex justify-between items-center">
