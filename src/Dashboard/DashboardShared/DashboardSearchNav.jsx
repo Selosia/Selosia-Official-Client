@@ -18,6 +18,7 @@ import {
 import { AuthContext } from "../../context/AuthProvider";
 import { MdDashboardCustomize } from "react-icons/md";
 import signOut from "../../assets/image/signOut.png";
+import { AiOutlineClose } from "react-icons/ai";
 // import AdditionalSidebar from "../AdminDashboard/AdditionalSidebar";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
@@ -55,7 +56,9 @@ const DashboardSearchNav = () => {
   // console.log(time);
 
   //* set toggle button local storage for fixed with toggle
-  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("darkMode") === "true");
+  const [isDarkMode, setIsDarkMode] = useState(
+    localStorage.getItem("darkMode") === "true"
+  );
 
   const toggleMode = () => {
     const newMode = !isDarkMode;
@@ -100,14 +103,6 @@ const DashboardSearchNav = () => {
     });
   }, [user]);
 
-  // logout user
-  // const handleLogOut = () => {
-  //   logOut();
-  //   navigate("/authentication/login");
-  // };
-
-  // const navigate = useNavigate();
-
   const handleLogOut = () => {
     logOut();
     navigate("/authentication/login")
@@ -144,12 +139,12 @@ const DashboardSearchNav = () => {
                 className="drawer-overlay"
               ></label>
 
-              <ul className="space-y-1  menu min-h-full dark:bg-gray-800 bg-base-200 text-base-content">
+              <ul className="  menu min-h-full dark:bg-gray-800 bg-base-200 text-base-content">
                 <label
                   htmlFor="additional-drawer"
                   className="cursor-pointer text-2xl  hover:text-gray-800 m-5 flex justify-end"
                 >
-                  <AiOutlineArrowLeft />
+                  <AiOutlineClose className="hover:bg-gray-200 transition-all duration-500 p-2 text-4xl rounded-full" />
                 </label>
 
                 <li>
@@ -319,7 +314,7 @@ const DashboardSearchNav = () => {
                 </li>
 
                 <li onClick={handleLogOut}>
-                  <p className="flex  group  dark:text-white dark:hover:text-cyan-500 hover:text-cyan-500 text-semibold hover:bg-transparent">
+                  <p className="flex  group  dark:text-white dark:hover:text-red-500 hover:text-red-500 text-semibold hover:bg-transparent">
                     <span className="mx-3 dark:text-black shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)] rounded-lg bg-white p-2 group-hover:scale-125 duration-700">
                       <BsFillDoorOpenFill className="group-hover:scale-125 duration-700" />
                     </span>
@@ -345,7 +340,11 @@ const DashboardSearchNav = () => {
           userType === 'Admin' && */}
         <div className="navbar-end p-2 md:hidden">
           <div className="drawer">
-            <input id="admin-drawer" type="checkbox" className="drawer-toggle" />
+            <input
+              id="admin-drawer"
+              type="checkbox"
+              className="drawer-toggle"
+            />
 
             {/* <MobileAdminDrawerSide /> */}
           </div>
@@ -357,7 +356,11 @@ const DashboardSearchNav = () => {
           userType === 'Buyer' && */}
         <div className="navbar-end p-2 md:hidden">
           <div className="drawer">
-            <input id="buyer-drawer" type="checkbox" className="drawer-toggle" />
+            <input
+              id="buyer-drawer"
+              type="checkbox"
+              className="drawer-toggle"
+            />
 
             {/* <MobileBuyerDrawerSide /> */}
           </div>
@@ -384,9 +387,14 @@ const DashboardSearchNav = () => {
           </label>
 
           {/* Dropdown by clicking user image */}
-          <ul tabIndex={0} className="mt-3 z-[1] p-2   shadow menu menu-sm dropdown-content  rounded-box w-60">
+          <ul
+            tabIndex={0}
+            className="mt-3 z-[1] p-2   shadow menu menu-sm dropdown-content  rounded-box w-60"
+          >
             <li>
-              <a className="flex justify-start font-bold  h-10 ">{user?.displayName}</a>
+              <a className="flex justify-start font-bold  h-10 ">
+                {user?.displayName}
+              </a>
             </li>
 
             <li onClick={handleLogOut}>
