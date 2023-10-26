@@ -7,6 +7,7 @@ import { BiCommentDots } from "react-icons/bi";
 import Loader from "../../shared/Loader";
 
 const DynamicBlog = ({ dynamicBlogs }) => {
+  console.log(dynamicBlogs);
   // modal submit
   const [modalData, setModalData] = useState();
   const handleCommentModal = (data) => {
@@ -16,8 +17,7 @@ const DynamicBlog = ({ dynamicBlogs }) => {
   return (
     <div className="max-w-screen-xl h-full space-y-12">
       <div className="space-y-12 lg:space-y-0">
-        {
-        dynamicBlogs?.map((data, i) => (
+        {dynamicBlogs?.map((data, i) => (
           <div key={i + 1}>
             <div className="flex flex-col lg:mt-10 md:flex-row  gap-8">
               <div className="w-full ">
@@ -49,6 +49,15 @@ const DynamicBlog = ({ dynamicBlogs }) => {
                       leave comment
                       <BiCommentDots className="mt-1 text-xl ml-2" />
                     </label>
+                  </div>
+                </div>
+                <div>
+                  <hr />
+                  <div className="flex mt-2 justify-between">
+                    <h1 className="title">{data?.authorName}</h1>
+                    <h1 className="font-semibold">
+                      {data?.date.slice(0, 10).split("-").reverse().join("-")}
+                    </h1>
                   </div>
                 </div>
               </div>

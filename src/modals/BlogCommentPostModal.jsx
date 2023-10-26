@@ -19,7 +19,7 @@ const BlogCommentPostModal = ({ modalData }) => {
       dateTime: dateFormate,
       commenterImg: user?.photoURL,
     };
-    // console.log(commentData);
+    console.log(commentData);
     fetch(`https://web-tech-official-server.vercel.app/blogsComments`, {
       method: "post",
       headers: { "content-type": "application/json" },
@@ -52,19 +52,22 @@ const BlogCommentPostModal = ({ modalData }) => {
           <div>
             <h1 className="text-center">
               Leave comment for
-              <p className="text-amber-400">{modalData?.title}</p>
+              <p className="title">{modalData?.title}</p>
             </h1>
 
             <div className="text-gray-700 py-3">
               <form onSubmit={() => handleSubmit(event)}>
                 <textarea
-                  className="textarea textarea-warning w-full"
+                  className="textarea border-gray-500 w-full"
                   placeholder="Write your comment"
                   name="comment"
                   required
                 ></textarea>
 
-                <button type="submit" className="btn btn-sm">
+                <button
+                  type="submit"
+                  className="btn px-12  title btn-outline hover:border-[#26BFC7] hover:bg-[#26BFC7] transition-all duration-500"
+                >
                   <label htmlFor="CommentForABlogModal">Submit</label>
                 </button>
               </form>
