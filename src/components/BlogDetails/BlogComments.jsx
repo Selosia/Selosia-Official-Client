@@ -16,18 +16,10 @@ const BlogComments = ({ blogID }) => {
   }, [blogID]);
   // console.log(commentData);
   return (
-    <div className="">
-      {commentData?.length > 0 ? (
-        commentData?.map((data) => (
-          <CommentCard key={data._id} data={data}></CommentCard>
-        ))
-      ) : (
-        <div className=" text-center  text-md title text-red-500">
-          <FaComments className="w-1/2 mx-auto text-6xl" />
-          No Comments <br />
-          Be the first to comment
-        </div>
-      )}
+    <div className="p-10 max-h-[73vh] overflow-auto min-h-[20vh]">
+      {commentData?.map((data) => (
+        <CommentCard key={data._id} data={data}></CommentCard>
+      ))}
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { AuthContext } from "../context/AuthProvider";
 const BlogCommentPostModal = ({ modalData }) => {
   const { user } = useContext(AuthContext);
   const date = new Date();
-  const dateFormate = date.toLocaleDateString();
+  const dateFormate = String(date.toLocaleDateString());
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -61,6 +61,7 @@ const BlogCommentPostModal = ({ modalData }) => {
                   className="textarea border-gray-500 w-full"
                   placeholder="Write your comment"
                   name="comment"
+                  maxLength={350}
                   required
                 ></textarea>
 
