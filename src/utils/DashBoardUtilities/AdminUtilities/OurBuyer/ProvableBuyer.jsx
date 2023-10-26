@@ -1,44 +1,10 @@
 import { useEffect, useState } from "react";
 // import { getAllActualBuyers } from "../../../../apis/ourBuyerOperation";
 import { Link } from "react-router-dom";
-import ReactPaginate from "react-paginate";
 
 const ProvableBuyer = () => {
   const [buyers, setBuyers] = useState([]);
-  console.log(buyers);
-
-  // const [pageCount, setpageCount] = useState(0);
-  // let limit = 2;
-  // useEffect(() => {
-  //   const getSubmittedProject = async () => {
-  //     const res = await fetch(
-  //       `https://codexriddle-official-server.vercel.app/api/v1/user/provableBuyer?_page=1&_limit=${limit}`
-  //     );
-  //     const data = await res.json();
-  //     const total = res.headers.get("x-total-count");
-  //     setpageCount(Math.ceil(total / limit));
-
-  //     setBuyers(data.data);
-  //   };
-
-  //   getSubmittedProject();
-  // }, [limit]);
-
-  // const fetchSubmittedProject = async (currentPage) => {
-  //   const res = await fetch(
-  //     `https://codexriddle-official-server.vercel.app/api/v1/user/provableBuyer?_page=${currentPage}&_limit=${limit}`
-  //   );
-  //   const data = await res.json();
-  //   return data;
-  // };
-
-  // const handlePageClick = async (data) => {
-  //   console.log(data.selected);
-  //   let currentPage = data.selected + 1;
-  //   const submittedProjectFromServer = await fetchSubmittedProject(currentPage);
-  //   setpageCount(Math.ceil(submittedProjectFromServer.total / limit));
-  //   setBuyers(submittedProjectFromServer.data);
-  // };
+  // console.log(buyers);
 
   useEffect(() => {
     fetch(

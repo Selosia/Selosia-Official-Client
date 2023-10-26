@@ -1,6 +1,6 @@
 const Loader = () => {
   return (
-    <div className="">
+    <div className="flex flex-col justify-between items-center text-centers">
       {/* <div className="relative flex justify-center items-center">
         <div className="absolute animate-spin rounded-full h-10 w-10 border-t-4 border-b-4 border-purple-500"></div>
         <img
