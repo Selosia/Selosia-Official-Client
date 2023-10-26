@@ -6,7 +6,7 @@ import Loader from "../../../../shared/Loader";
 const OurActualBuyer = () => {
   const [buyers, setBuyers] = useState([]);
   const [isLoading, setLoading] = useState(false);
-
+  console.log(buyers);
   useEffect(() => {
     setLoading(true);
     fetch(
@@ -24,13 +24,16 @@ const OurActualBuyer = () => {
     <div className="p-10 max-h-[50vh] overflow-auto min-h-[20vh]">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl mb-2 text-start"> Actual buyer</h1>
-          <p className="text-start"> Total Buyer : {buyers?.length}</p>
+          <h1 className="text-2xl title mb-1 text-start"> Actual buyer</h1>
+          <p className="text-start font-semibold">
+            {" "}
+            Total Buyer : {buyers?.length}
+          </p>
         </div>
       </div>
 
       <div>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto mt-2">
           <table className="table">
             {/* head */}
             <thead>
@@ -39,7 +42,7 @@ const OurActualBuyer = () => {
                 <th>Image</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Total Task</th>
+                <th>Total order</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -47,7 +50,9 @@ const OurActualBuyer = () => {
               {isLoading ? (
                 <tr className="">
                   <td colSpan="6" className="text-center">
-                    <Loader />
+                    <div className="flex items-center justify-center h-32">
+                      <Loader />
+                    </div>
                   </td>
                 </tr>
               ) : buyers && buyers?.length > 0 ? (
