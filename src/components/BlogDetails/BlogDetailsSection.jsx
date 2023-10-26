@@ -3,9 +3,9 @@ import BlogCommentPostModal from "../../modals/BlogCommentPostModal";
 import BlogComments from "../BlogDetails/BlogComments";
 import RestOfBlogs from "./RestOfBlogs";
 import { useState } from "react";
-import { FaComments } from "react-icons/fa";
 import { useEffect } from "react";
 import axios from "axios";
+import { LiaComments } from "react-icons/lia";
 
 const BlogDetailsSection = ({ blogInfo }) => {
   // console.log(blogInfo.data._id);
@@ -15,7 +15,7 @@ const BlogDetailsSection = ({ blogInfo }) => {
   };
 
   const [commentData, setCommentData] = useState();
-  console.log(commentData);
+  // console.log(commentData);
   useEffect(() => {
     axios
       .get(
@@ -55,7 +55,7 @@ const BlogDetailsSection = ({ blogInfo }) => {
           <BlogComments blogID={blogInfo?.data?._id} />
           {commentData?.length === 0 && (
             <div className=" text-center  text-md title text-red-500">
-              <FaComments className="w-1/2 mx-auto text-6xl" />
+              <LiaComments className="w-1/2 mx-auto text-6xl" />
               No Comments <br />
               Be the first to comment
             </div>
