@@ -25,8 +25,14 @@ const ProvableBuyer = () => {
     <div className="p-10 max-h-screen overflow-auto ">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl mb-2 text-start"> Provable buyer (users)</h1>
-          <p className="text-start"> Total users : {buyers?.length}</p>
+          <h1 className="text-2xl mb-1 title text-start">
+            {" "}
+            Provable buyer (users)
+          </h1>
+          <p className="text-start font-semibold">
+            {" "}
+            Total users : {buyers?.length}
+          </p>
         </div>
       </div>
 
