@@ -1,51 +1,24 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Loader from "../../../../shared/Loader";
 // import { getAllActualBuyers } from "../../../../apis/ourBuyerOperation";
-import ReactPaginate from "react-paginate";
 
 const OurActualBuyer = () => {
   const [buyers, setBuyers] = useState([]);
-
-  // const [pageCount, setpageCount] = useState(0);
-  // let limit = 4;
-
-  // useEffect(() => {
-  //   const getSubmittedProject = async () => {
-  //     const res = await fetch(
-  //       `https://codexriddle-official-server.vercel.app/api/v1/user/all-actualBuyer?_page=1&_limit=${limit}`
-  //     );
-  //     const data = await res.json();
-  //     const total = res.headers.get("x-total-count");
-  //     setpageCount(Math.ceil(total / limit));
-
-  //     setBuyers(data.data);
-  //   };
-
-  //   getSubmittedProject();
-  // }, [limit]);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     fetch(
       `https://selosia-official-server.vercel.app/api/v1/user/all-actualBuyer`
     )
       .then((res) => res.json())
-      .then((data) => setBuyers(data?.data));
+      .then((data) => setBuyers(data?.data))
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
-  // const fetchSubmittedProject = async (currentPage) => {
-  //   const res = await fetch(
-  //     `https://codexriddle-official-server.vercel.app/api/v1/user/all-actualBuyer?_page=${currentPage}&_limit=${limit}`
-  //   );
-  //   const data = await res.json();
-  //   return data;
-  // };
-
-  // const handlePageClick = async (data) => {
-  //   console.log(data.selected);
-  //   let currentPage = data.selected + 1;
-  //   const submittedProjectFromServer = await fetchSubmittedProject(currentPage);
-  //   setpageCount(Math.ceil(submittedProjectFromServer.total / limit));
-  //   setBuyers(submittedProjectFromServer.data);
   // };
   return (
     <div className="p-10 max-h-[50vh] overflow-auto min-h-[20vh]">
@@ -61,8 +34,8 @@ const OurActualBuyer = () => {
           <table className="table">
             {/* head */}
             <thead>
-              <tr className="">
-                <th>S/N</th>
+              <tr className="title text-gray-900">
+                <th>Serial No</th>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Email</th>
@@ -71,7 +44,13 @@ const OurActualBuyer = () => {
               </tr>
             </thead>
             <tbody>
-              {buyers && buyers?.length > 0 ? (
+              {isLoading ? (
+                <tr className="">
+                  <td colSpan="6" className="text-center">
+                    <Loader />
+                  </td>
+                </tr>
+              ) : buyers && buyers?.length > 0 ? (
                 buyers.map((buyer, idx) => (
                   <tr key={buyer?._id}>
                     <td>{idx + 1}</td>
