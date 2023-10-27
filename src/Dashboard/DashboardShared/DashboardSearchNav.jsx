@@ -21,7 +21,8 @@ import signOut from "../../assets/image/signOut.png";
 import { AiOutlineClose } from "react-icons/ai";
 // import AdditionalSidebar from "../AdminDashboard/AdditionalSidebar";
 import { Link, useNavigate } from "react-router-dom";
-import { AiOutlineArrowLeft } from "react-icons/ai";
+import { CiMenuFries } from "react-icons/ci";
+
 import { SiBloglovin } from "react-icons/si";
 import { getCurrentUserInfo } from "../../apis/userOperations";
 // import MobileAdminDrawerSide from "../../Utilities/DashboardSearchNav/MobileAdminDrawerSide";
@@ -115,7 +116,7 @@ const DashboardSearchNav = () => {
       <div className="flex justify-around py-5">
         {/* (Dashboard) Accordion large screen drawer for admin only */}
         {logUser?.role === "Admin" && (
-          <div className="drawer w-36 ">
+          <div className="tooltip tooltip-bottom drawer w-10 ">
             <input
               id="additional-drawer"
               type="checkbox"
@@ -123,12 +124,11 @@ const DashboardSearchNav = () => {
             />
             <label
               htmlFor="additional-drawer"
-              className="drawer-content flex group  dark:text-white dark:hover:text-cyan-500 hover:text-cyan-500 text-semibold cursor-pointer"
+              data-tip="Click"
+              className="drawer-content tooltip tooltip-bottom flex group  dark:text-white  text-semibold cursor-pointer"
             >
-              <span className="mx-3 h-8 flex items-center dark:text-black shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)] rounded-lg bg-white group-hover:text-[#26BFC7] p-2 group-hover:scale-110 duration-700">
-                <MdDashboardCustomize className="group-hover:scale-110 duration-700" />
-              </span>
-              <span className=" cursor-pointer mt-2">Additional</span>
+              <CiMenuFries className="text-3xl  mt-1 font-bold " />
+              {/* <span className=" cursor-pointer mt-2">Additional</span> */}
             </label>
 
             {/* Additional Sidebar  */}
@@ -329,7 +329,7 @@ const DashboardSearchNav = () => {
         )}
 
         {/* Time */}
-        <div className=" hidden title md:flex text-gray-500">
+        <div className=" hidden title mt-2 md:flex text-gray-500">
           <BsSmartwatch className="mx-2 text-2xl text-[#26BFC7]" />
           <span>{time?.slice(0, 19)} </span>
           <span className="">{time?.slice(19, 23)}</span>
