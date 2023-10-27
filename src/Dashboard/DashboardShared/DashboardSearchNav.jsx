@@ -16,7 +16,7 @@ import {
   BsTrash3Fill,
 } from "react-icons/bs";
 import { AuthContext } from "../../context/AuthProvider";
-import { MdDashboardCustomize } from "react-icons/md";
+import { AiFillHome } from "react-icons/ai";
 import signOut from "../../assets/image/signOut.png";
 import { AiOutlineClose } from "react-icons/ai";
 // import AdditionalSidebar from "../AdminDashboard/AdditionalSidebar";
@@ -113,7 +113,7 @@ const DashboardSearchNav = () => {
 
   return (
     <div className="border lg:mx-5 h-20 rounded-md bg-white dark:bg-black dark:text-white">
-      <div className="flex justify-around py-5">
+      <div className="flex mx-5 lg:mx-0 justify-around py-5">
         {/* (Dashboard) Accordion large screen drawer for admin only */}
         {logUser?.role === "Admin" && (
           <div className="tooltip tooltip-bottom drawer w-10 ">
@@ -149,8 +149,19 @@ const DashboardSearchNav = () => {
 
                 <li>
                   <Link
+                    to="/"
+                    className="flex  mt-5   group  dark:text-white dark:hover:text-cyan-500 hover:text-cyan-500 text-semibold hover:bg-transparent"
+                  >
+                    <span className="mx-3 dark:text-black shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)] rounded-lg bg-white p-2 group-hover:scale-125 duration-700">
+                      <AiFillHome className=" group-hover:scale-125 duration-700" />
+                    </span>
+                    <span className="mt-2">Home</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     to="/admin-profile/dashboard"
-                    className="flex  mt-5 lg:hidden  group  dark:text-white dark:hover:text-cyan-500 hover:text-cyan-500 text-semibold hover:bg-transparent"
+                    className="flex  lg:hidden  group  dark:text-white dark:hover:text-cyan-500 hover:text-cyan-500 text-semibold hover:bg-transparent"
                   >
                     <span className="mx-3 dark:text-black shadow-[0_2.8px_2.2px_rgba(0,_0,_0,_0.034),_0_6.7px_5.3px_rgba(0,_0,_0,_0.048),_0_12.5px_10px_rgba(0,_0,_0,_0.06),_0_22.3px_17.9px_rgba(0,_0,_0,_0.072),_0_41.8px_33.4px_rgba(0,_0,_0,_0.086),_0_100px_80px_rgba(0,_0,_0,_0.12)] rounded-lg bg-white p-2 group-hover:scale-125 duration-700">
                       <BsBookmarkStarFill className=" group-hover:scale-125 duration-700" />
@@ -381,7 +392,7 @@ const DashboardSearchNav = () => {
         {/* user image */}
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
+            <div className="w-10 h-10 rounded-full">
               <img src={user?.photoURL} className="border" />
             </div>
           </label>
@@ -389,7 +400,7 @@ const DashboardSearchNav = () => {
           {/* Dropdown by clicking user image */}
           <ul
             tabIndex={0}
-            className="mt-3 z-[1] p-2   shadow menu menu-sm dropdown-content  rounded-box w-60"
+            className="mt-3  z-50 p-2 bg-[#26BFC7]  shadow menu menu-sm dropdown-content  rounded-box w-60"
           >
             <li>
               <a className="flex justify-start font-bold  h-10 ">
