@@ -72,7 +72,7 @@ const AllCompletedTask = () => {
                     {data?.domain}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-center text-gray-700">
-                    {data?.date.slice(0, 10)}
+                    {data?.date.slice(0, 10).split("-").reverse().join("-")}
                   </td>
                 </tr>
               ))
