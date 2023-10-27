@@ -131,7 +131,7 @@ const RegisterFormField = () => {
   return (
     <div className="px-12 py-12">
       <div>
-        <h2 className="text-center uppercase mb-8 mt-12 title text-3xl font-bold lg:text-white drop-shadow-lg shadow-black text-[#26BFC7]">
+        <h2 className="text-center uppercase mb-8 mt-12 title text-3xl font-bold  drop-shadow-lg shadow-black text-[#26BFC7]">
           Sign Up
         </h2>
 
@@ -147,7 +147,7 @@ const RegisterFormField = () => {
                   type="text"
                   name="name"
                   id="text"
-                  placeholder="User full name"
+                  placeholder="Full name"
                   className="w-full px-3 py-3 rounded-xl bg-white focus outline-none  "
                   required
                 />
