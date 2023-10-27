@@ -1,18 +1,22 @@
-// import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import AllSubmittedTaskHeading from "./AllSubmittedTaskHeading";
-import ReactPaginate from "react-paginate";
+import Loader from "../../../shared/Loader";
 
 const AllCompletedTask = () => {
+  const [isLoading, setLoading] = useState(false);
   const [items, setItems] = useState([]);
 
   useEffect(() => {
+    setLoading(true);
     fetch(
       `https://codexriddle-official-server.vercel.app/api/v1/project/all-submittedProject`
     )
       .then((res) => res.json())
-      .then((data) => setItems(data?.data));
+      .then((data) => setItems(data?.data))
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   return (
@@ -44,7 +48,15 @@ const AllCompletedTask = () => {
             </tr>
           </thead>
           <tbody className="divide-y  divide-gray-200">
-            {items && items.length > 0 ? (
+            {isLoading ? (
+              <tr className="">
+                <td colSpan="6" className="text-center">
+                  <div className="flex items-center justify-center h-32">
+                    <Loader />
+                  </div>
+                </td>
+              </tr>
+            ) : items && items.length > 0 ? (
               items.map((data, i) => (
                 <tr key={data.id}>
                   <td className="whitespace-nowrap px-4 text-center py-2  text-gray-900">
