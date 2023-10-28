@@ -1,9 +1,7 @@
 import { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
-import brandLogo from "../../assets/selosiaLOGO.png";
 import useUserType from "../../hooks/useUserType";
-import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 const MobileScreenNav = () => {
