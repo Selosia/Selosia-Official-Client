@@ -101,6 +101,7 @@ const ContactUS = () => {
                 <input
                   type="text"
                   name="message"
+                  required
                   className="w-full py-4 text-sm bg-transparent border-b border-b-black focus:outline-none"
                   placeholder="Start typing here..."
                 />
