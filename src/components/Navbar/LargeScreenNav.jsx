@@ -6,34 +6,33 @@ import "../../css/navbar.css";
 import signOut from "../../assets/image/logOut.png";
 
 import useUserType from "../../hooks/useUserType";
+import Swal from "sweetalert2";
 
 const LargeScreenNav = ({ logUser }) => {
   const { user, logOut } = useContext(AuthContext);
-  const [userType,loading] = useUserType(user?.email) 
-  
+  const [userType, loading] = useUserType(user?.email);
 
   const navigate = useNavigate();
 
   const handleLogOut = () => {
     logOut();
     navigate("/authentication/login");
-    toast.error("logged out!", {
-      position: "bottom-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
+    Swal.fire({
+      icon: "error",
+      title: "",
+      text: "Logout Successful!",
     });
   };
 
   return (
     <div className="m-auto fixed right-0 left-0  top-10 z-30 navbar hidden lg:flex backdrop-blur-xl bg-transparent">
-      <div className=" w-full  flex justify-evenly">
+      <div className=" w-full title flex justify-evenly">
         <div className="">
-          <img className="h-16" src='https://i.ibb.co/nkH6hMK/logo2-removebg-preview.png' alt="brandLOGO" />
+          <img
+            className="h-16"
+            src="https://i.ibb.co/nkH6hMK/logo2-removebg-preview.png"
+            alt="brandLOGO"
+          />
         </div>
 
         <nav className="space-x-12 font-bold">
@@ -64,59 +63,47 @@ const LargeScreenNav = ({ logUser }) => {
             Blogs
           </NavLink>
 
-            {
-                userType === 'Admin'
-                  &&   
-                  <NavLink
-                className={({ isActive }) =>
-                  isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav"
-                }
-                to="/admin-profile/dashboard"
-              >
-                 Dashboard
-              </NavLink>
-            }
-            {
-              userType === 'Buyer'
-              &&  
-              <NavLink
+          {userType === "Admin" && (
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav"
+              }
+              to="/admin-profile/dashboard"
+            >
+              Dashboard
+            </NavLink>
+          )}
+          {userType === "Buyer" && (
+            <NavLink
               className={({ isActive }) =>
                 isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav"
               }
               to="/actual-buyer/dashboard"
             >
-               Dashboard
+              Dashboard
             </NavLink>
-
-            }
-            {
-              userType === 'User'
-              && 
-
-              <NavLink
+          )}
+          {userType === "User" && (
+            <NavLink
               className={({ isActive }) =>
                 isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav"
               }
               to="/user/dashboard"
             >
-               Dashboard
+              Dashboard
             </NavLink>
-            }
+          )}
 
-            {
-              !user?.uid && 
-              
-                <NavLink
-                className={({ isActive }) =>
-                  isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav"
-                }
-                to="/authentication/logIn"
-              >
-                Login
-              </NavLink>
-            }
-           
-        
+          {!user?.uid && (
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-[#26BFC7] cursor-text" : "text-gray-800 nav"
+              }
+              to="/authentication/logIn"
+            >
+              Login
+            </NavLink>
+          )}
         </nav>
 
         <div className="">
@@ -138,7 +125,7 @@ const LargeScreenNav = ({ logUser }) => {
             {user?.uid ? (
               <ul
                 tabIndex={0}
-                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-[#e6feff] rounded-box w-56"
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-[#e6feff] rounded-box w-60"
               >
                 <li>
                   <a className="flex justify-center font-bold items-center h-10 ">

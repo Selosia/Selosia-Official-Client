@@ -1,77 +1,59 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import { getAllActualBuyers } from "../../../../apis/ourBuyerOperation";
-import ReactPaginate from "react-paginate";
-
+import Loader from "../../../../shared/Loader";
 const OurActualBuyer = () => {
   const [buyers, setBuyers] = useState([]);
-
-  // const [pageCount, setpageCount] = useState(0);
-  // let limit = 4;
-
-  // useEffect(() => {
-  //   const getSubmittedProject = async () => {
-  //     const res = await fetch(
-  //       `https://codexriddle-official-server.vercel.app/api/v1/user/all-actualBuyer?_page=1&_limit=${limit}`
-  //     );
-  //     const data = await res.json();
-  //     const total = res.headers.get("x-total-count");
-  //     setpageCount(Math.ceil(total / limit));
-
-  //     setBuyers(data.data);
-  //   };
-
-  //   getSubmittedProject();
-  // }, [limit]);
+  const [isLoading, setLoading] = useState(false);
+  // console.log(buyers);
 
   useEffect(() => {
+    setLoading(true);
     fetch(
       `https://selosia-official-server.vercel.app/api/v1/user/all-actualBuyer`
     )
       .then((res) => res.json())
-      .then((data) => setBuyers(data?.data));
+      .then((data) => setBuyers(data?.data))
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
-  // const fetchSubmittedProject = async (currentPage) => {
-  //   const res = await fetch(
-  //     `https://codexriddle-official-server.vercel.app/api/v1/user/all-actualBuyer?_page=${currentPage}&_limit=${limit}`
-  //   );
-  //   const data = await res.json();
-  //   return data;
-  // };
-
-  // const handlePageClick = async (data) => {
-  //   console.log(data.selected);
-  //   let currentPage = data.selected + 1;
-  //   const submittedProjectFromServer = await fetchSubmittedProject(currentPage);
-  //   setpageCount(Math.ceil(submittedProjectFromServer.total / limit));
-  //   setBuyers(submittedProjectFromServer.data);
-  // };
   return (
     <div className="p-10 max-h-[50vh] overflow-auto min-h-[20vh]">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl mb-2 text-start"> Actual buyer</h1>
-          <p className="text-start"> Total Buyer : {buyers?.length}</p>
+          <h1 className="text-2xl title mb-1 text-start"> Actual buyer</h1>
+          <p className="text-start font-semibold">
+            {" "}
+            Total Buyer : {buyers?.length}
+          </p>
         </div>
       </div>
 
       <div>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto mt-2">
           <table className="table">
             {/* head */}
             <thead>
-              <tr className="">
-                <th>S/N</th>
+              <tr className="title text-gray-900">
+                <th>Serial No</th>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Total Task</th>
+                <th>Total order</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {buyers && buyers?.length > 0 ? (
+              {isLoading ? (
+                <tr className="">
+                  <td colSpan="6" className="text-center">
+                    <div className="flex items-center justify-center h-32">
+                      <Loader />
+                    </div>
+                  </td>
+                </tr>
+              ) : buyers && buyers?.length > 0 ? (
                 buyers.map((buyer, idx) => (
                   <tr key={buyer?._id}>
                     <td>{idx + 1}</td>

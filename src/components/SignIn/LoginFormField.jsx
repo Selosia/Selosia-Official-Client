@@ -1,5 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import {FaCreativeCommonsSa,FaLock,FaRegEye,FaRegEyeSlash,} from "react-icons/fa";
+import {
+  FaCreativeCommonsSa,
+  FaLock,
+  FaRegEye,
+  FaRegEyeSlash,
+} from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import SocialMediaLogin from "./SocialMediaLogin";
@@ -7,72 +12,50 @@ import { toast } from "react-toastify";
 import app from "../../firebase/Firebase.init";
 import { AuthContext } from "../../context/AuthProvider";
 
-
-
-
-
-
 const auth = getAuth(app);
 
 const LoginFormField = () => {
-  const location = useLocation()
-  const navigate = useNavigate()
-  const from = location?.state?.form.pathname || "/"
-  const { userSingIn } = useContext(AuthContext)
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location?.state?.form.pathname || "/";
+  const { userSingIn } = useContext(AuthContext);
   const [show, setShow] = useState(false);
   const [userEmail, setUserEmail] = useState();
   const [error, setError] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
+  //!/* ----------------------------- show password ---------------------------- */
 
-
-
-
-
-
-   //!/* ----------------------------- show password ---------------------------- */
-
-  const hnadleShow = () => {
+  const handleShow = () => {
     setShow(!show);
   };
 
-
-
-
-
-
   //?/* ------------------------------   checkbox ----------------------------- */
 
-   //!/* --------- Load saved email and password when the component mounts -------- */
+  //!/* --------- Load saved email and password when the component mounts -------- */
 
   useEffect(() => {
-    const savedEmail = localStorage.getItem('email');
-    const savedPassword = localStorage.getItem('password');
+    const savedEmail = localStorage.getItem("email");
+    const savedPassword = localStorage.getItem("password");
     if (savedEmail && savedPassword) {
       setEmail(savedEmail);
       setPassword(savedPassword);
     }
   }, []);
 
-
-
   //!/* --------  Update localStorage when the rememberMe state changes -------- */
 
   useEffect(() => {
     if (rememberMe) {
-      localStorage.setItem('email', email);
-      localStorage.setItem('password', password);
+      localStorage.setItem("email", email);
+      localStorage.setItem("password", password);
     } else {
-      localStorage.removeItem('email');
-      localStorage.removeItem('password');
+      localStorage.removeItem("email");
+      localStorage.removeItem("password");
     }
   }, [email, password, rememberMe]);
-
-
-
-
 
   //!/* ----------------------------  handle login ---------------------------- */
 
@@ -82,51 +65,43 @@ const LoginFormField = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
-    userSingIn(email , password)
-    .then(result =>{
-      const userLoggin = result.user;
-      console.log(userLoggin);
-      toast("User logged in successfully");
-      navigate(from , {replace: true});
-    })
-    .catch(err => {
-      setError((err))
-    })
+    userSingIn(email, password)
+      .then((result) => {
+        const userLoggin = result.user;
+        console.log(userLoggin);
+        toast("User logged in successfully");
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        setError(err);
+      });
   };
 
+  //! /* ----------------------- handle Forget Password ----------------------- */
 
+  const handleEmailForResetPassword = (e) => {
+    const email = e.target.value;
+    setUserEmail(email);
 
-
-   //! /* ----------------------- handle Forget Password ----------------------- */
-
-    const handleEmailForResetPassword = (e) => {
-      const email = e.target.value;
-      setUserEmail(email);
-  
-      // console.log(email);
-    };
-
-
+    // console.log(email);
+  };
 
   //!/* ----------------------------  handle forget password ---------------------------- */
 
-    const handleForgetPassword = () => {
-      if (!userEmail) {
-        alert("Please enter your email address");
-      } else {
-        sendPasswordResetEmail(auth, userEmail)
-          .then(() => {
-            toast("password reset sent");
-          })
-          .catch((er) => {
-            toast(er.message);
-            console.error(er);
-          });
-      }
-    };
-
-
-
+  const handleForgetPassword = () => {
+    if (!userEmail) {
+      alert("Please enter your email address");
+    } else {
+      sendPasswordResetEmail(auth, userEmail)
+        .then(() => {
+          toast("password reset sent");
+        })
+        .catch((er) => {
+          toast(er.message);
+          console.error(er);
+        });
+    }
+  };
 
   return (
     <div
@@ -163,7 +138,7 @@ const LoginFormField = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <div onClick={hnadleShow} className="mr-4">
+              <div onClick={handleShow} className="mr-4">
                 {!show ? (
                   <FaRegEye className="text-xl"></FaRegEye>
                 ) : (
@@ -175,34 +150,43 @@ const LoginFormField = () => {
           </div>
           <div className="flex justify-between mt-4 mx-2">
             <div className="flex items-center">
-            <input
-              type="checkbox"
-              checked={rememberMe}
-              onChange={() => setRememberMe(!rememberMe)}
-            />
+              <input
+                type="checkbox"
+                checked={rememberMe}
+                onChange={() => setRememberMe(!rememberMe)}
+              />
               <h2 className="ml-2">Remember</h2>
             </div>
             <div>
-                <h2 onClick={handleForgetPassword} className="hover:underline cursor-pointer">Forgot Password ?</h2>
-
+              <h2
+                onClick={handleForgetPassword}
+                className="hover:underline cursor-pointer"
+              >
+                Forgot Password ?
+              </h2>
             </div>
           </div>
           <div className="mt-6">
             <div>
               <button
                 type="submit"
-                className="w-full text-xl px-3 py-2 text-white rounded-xl bg-[#27E8B3]"
+                className="w-full  title px-3 py-2 text-white rounded-md bg-[#27E8B3]"
               >
-                Lon In
+                Login
               </button>
             </div>
           </div>
-          <Link to="/authentication/register" className="hover:underline text-[#3d49ef] hover:text-[#0011ff]">Do not have an account?</Link>
+          <Link
+            to="/authentication/register"
+            className="hover:underline text-[#3d49ef] hover:text-[#0011ff]"
+          >
+            Do not have an account?
+          </Link>
         </form>
 
         <div>
-          <h2 className="text-center mt-4">Sing Up With</h2>
-            <SocialMediaLogin />
+          <h2 className="text-center mt-4">Sign Up With</h2>
+          <SocialMediaLogin />
         </div>
       </div>
     </div>

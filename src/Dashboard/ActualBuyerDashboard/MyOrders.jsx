@@ -1,19 +1,23 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
+import Loader from "../../shared/Loader";
 
 const MyOrders = () => {
   const { user } = useContext(AuthContext);
   const [myOrders, setMyOrder] = useState([]);
+  const [isLoading, setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     fetch(
       `https://selosia-official-server.vercel.app/api/v1/project/orderedProject?email=${user?.email}`
     )
       .then((res) => res.json())
-      .then((data) => setMyOrder(data?.data));
+      .then((data) => setMyOrder(data?.data))
+      .finally(() => {
+        setLoading(false);
+      });
   }, [user?.email]);
 
-
-  
   return (
     <div>
       <div className="p-10 max-h-[73vh] overflow-auto min-h-[20vh]">
@@ -41,7 +45,15 @@ const MyOrders = () => {
             </tr>
           </thead>
           <tbody className="divide-y  divide-gray-200">
-            {myOrders && myOrders.length > 0 ? (
+            {isLoading ? (
+              <tr className="">
+                <td colSpan="6" className="text-center">
+                  <div className="flex items-center justify-center h-32">
+                    <Loader />
+                  </div>
+                </td>
+              </tr>
+            ) : myOrders && myOrders.length > 0 ? (
               myOrders.map((data, i) => (
                 <tr key={i}>
                   <td className="whitespace-nowrap px-4 text-center py-2  ">

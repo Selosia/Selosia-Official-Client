@@ -1,59 +1,38 @@
 import { useEffect, useState } from "react";
 // import { getAllActualBuyers } from "../../../../apis/ourBuyerOperation";
 import { Link } from "react-router-dom";
-import ReactPaginate from "react-paginate";
+import Loader from "../../../../shared/Loader";
 
 const ProvableBuyer = () => {
   const [buyers, setBuyers] = useState([]);
-  console.log(buyers);
-
-  // const [pageCount, setpageCount] = useState(0);
-  // let limit = 2;
-  // useEffect(() => {
-  //   const getSubmittedProject = async () => {
-  //     const res = await fetch(
-  //       `https://codexriddle-official-server.vercel.app/api/v1/user/provableBuyer?_page=1&_limit=${limit}`
-  //     );
-  //     const data = await res.json();
-  //     const total = res.headers.get("x-total-count");
-  //     setpageCount(Math.ceil(total / limit));
-
-  //     setBuyers(data.data);
-  //   };
-
-  //   getSubmittedProject();
-  // }, [limit]);
-
-  // const fetchSubmittedProject = async (currentPage) => {
-  //   const res = await fetch(
-  //     `https://codexriddle-official-server.vercel.app/api/v1/user/provableBuyer?_page=${currentPage}&_limit=${limit}`
-  //   );
-  //   const data = await res.json();
-  //   return data;
-  // };
-
-  // const handlePageClick = async (data) => {
-  //   console.log(data.selected);
-  //   let currentPage = data.selected + 1;
-  //   const submittedProjectFromServer = await fetchSubmittedProject(currentPage);
-  //   setpageCount(Math.ceil(submittedProjectFromServer.total / limit));
-  //   setBuyers(submittedProjectFromServer.data);
-  // };
+  // console.log(buyers);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
+
     fetch(
-      `https://codexriddle-official-server.vercel.app/api/v1/user/provableBuyer`
+      `https://selosia-official-server.vercel.app/api/v1/user/all-provableBuyer`
     )
       .then((res) => res.json())
-      .then((data) => setBuyers(data?.data));
+      .then((data) => setBuyers(data?.data))
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   return (
     <div className="p-10 max-h-screen overflow-auto ">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl mb-2 text-start"> Provable buyer (users)</h1>
-          <p className="text-start"> Total users : {buyers?.length}</p>
+          <h1 className="text-2xl mb-1 title text-start">
+            {" "}
+            Provable buyer (users)
+          </h1>
+          <p className="text-start font-semibold">
+            {" "}
+            Total users : {buyers?.length}
+          </p>
         </div>
       </div>
 
@@ -62,12 +41,11 @@ const ProvableBuyer = () => {
           <table className="table">
             {/* header */}
             <thead>
-              <tr className="">
-                <th>S/N</th>
+              <tr className=" title text-gray-900">
+                <th>Serial No</th>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Total Task</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -75,7 +53,15 @@ const ProvableBuyer = () => {
             {/* Table */}
             <tbody>
               {/* row 1 */}
-              {buyers && buyers.length > 0 ? (
+              {isLoading ? (
+                <tr className="">
+                  <td colSpan="6" className="text-center">
+                    <div className="flex items-center justify-center h-32">
+                      <Loader />
+                    </div>
+                  </td>
+                </tr>
+              ) : buyers && buyers.length > 0 ? (
                 buyers?.map((buyer, idx) => (
                   <tr key={buyer?._id}>
                     <td>{idx + 1}</td>
@@ -92,9 +78,7 @@ const ProvableBuyer = () => {
                     <td>
                       <p>{buyer?.email}</p>
                     </td>
-                    <td>
-                      <p>{idx + 1}</p>
-                    </td>
+
                     <td>
                       <Link
                         to={`/admin-profile/dashboard/dynamic-provable-buyer-profile/${buyer?.email}`}

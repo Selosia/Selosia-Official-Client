@@ -11,14 +11,11 @@ const BlogDetails = () => {
     <div className="space-y-20 lg:mt-32">
       <BlogBanner />
 
-
       {/* Dynamic Blog will display in this section */}
-      <div
-  
-      >
+      <div>
         <BlogDetailsSection blogInfo={blog} />
+        <BlogComments />
       </div>
-
     </div>
   );
 };
