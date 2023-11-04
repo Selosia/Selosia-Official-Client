@@ -172,11 +172,11 @@ const router = createBrowserRouter([
   {
     path: "/admin-profile/dashboard",
     element: (
-      <PrivateRoute>
-        <AdminRoute>
+      // <PrivateRoute>
+      //   <AdminRoute>
           <AdminDashboard />
-        </AdminRoute>
-      </PrivateRoute>
+      //   </AdminRoute>
+      // </PrivateRoute>
     ),
     children: [
       {
@@ -202,41 +202,41 @@ const router = createBrowserRouter([
       {
         path: "/admin-profile/dashboard/new-order-request",
         element: (
-          <PrivateRoute>
-            <AdminRoute>
+          // <PrivateRoute>
+          //   <AdminRoute>
               <OrderRequest />
-            </AdminRoute>
-          </PrivateRoute>
+          //    </AdminRoute>
+          // </PrivateRoute> 
         ),
       },
       {
         path: "/admin-profile/dashboard/daily-scrum",
         element: (
-          <PrivateRoute>
-            <AdminRoute>
+          // <PrivateRoute>
+          //   <AdminRoute>
               <DailyScrum />
-            </AdminRoute>
-          </PrivateRoute>
+          //   </AdminRoute>
+          // </PrivateRoute>
         ),
       },
       {
         path: "/admin-profile/dashboard/new-task-list",
         element: (
-          <PrivateRoute>
-            <AdminRoute>
+          // <PrivateRoute>
+          //   <AdminRoute>
               <AllApproveOrders />
-            </AdminRoute>
-          </PrivateRoute>
+          //   </AdminRoute>
+          // </PrivateRoute>
         ),
       },
       {
         path: "/admin-profile/dashboard/dynamic-new-task-list/:id",
         element: (
-          <PrivateRoute>
-            <AdminRoute>
+          // <PrivateRoute>
+          //   <AdminRoute>
               <DynamicNewTaskList />
-            </AdminRoute>
-          </PrivateRoute>
+          //   </AdminRoute>
+          // </PrivateRoute>
         ),
         loader: ({ params }) =>
           fetch(
@@ -246,11 +246,11 @@ const router = createBrowserRouter([
       {
         path: "/admin-profile/dashboard/working-all-projects-list",
         element: (
-          <PrivateRoute>
-            <AdminRoute>
+          // <PrivateRoute>
+          //   <AdminRoute>
               <WorkingProjectsList />
-            </AdminRoute>
-          </PrivateRoute>
+          //   </AdminRoute>
+          // </PrivateRoute>
         ),
       },
       {

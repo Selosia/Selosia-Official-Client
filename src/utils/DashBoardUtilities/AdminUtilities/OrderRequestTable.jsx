@@ -6,7 +6,10 @@ import {
   orderSenderRoleUpdate,
 } from "../../../apis/orderOperation";
 
-const OrderRequestTable = ({ newOrderRequest }) => {
+const OrderRequestTable = ({ allperams }) => {
+
+
+  const {newOrderRequest,refetch} = allperams;
   const { user } = useContext(AuthContext);
 
   const [orderData, setOrderData] = useState();
@@ -29,7 +32,7 @@ const OrderRequestTable = ({ newOrderRequest }) => {
       console.log(response);
       // if(result.acknowledged === true) {
       handleRoleUpdate(data);
-      // refetch()
+      refetch()
 
       // }
     });
@@ -64,7 +67,7 @@ const OrderRequestTable = ({ newOrderRequest }) => {
       //console.log(result);
       // if(result.acknowledged === true) {
       alert(` ${data?.ProjectName} order request deleted!`);
-      // refetch()
+      refetch()
       // }
     });
   };
